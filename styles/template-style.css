@@ -28,9 +28,11 @@ main {
 }
 
 .game-window {
+    aspect-ratio: 16 / 9;
     min-height: 720px;
-    min-width: 1280px;
     background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
     border: solid black 5px;
     border-radius: 15px;
 }
