@@ -70,6 +70,8 @@ footer p {
     font-size: large;
 }
 
+/* TODO: finish responsivity, this one is not very good */
+
 @media screen and (max-width: 1600px) {
     .game-window {
         height: 540px;
