@@ -21,21 +21,22 @@ header .caveclub-logo {
 }
 
 main {
-    padding: 50px 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .game-window {
+    margin: 50px 0;
     aspect-ratio: 16 / 9;
-    min-height: 720px;
+    height: 720px;
     background-color: white;
     background-repeat: no-repeat;
     background-size: cover;
     border: solid black 5px;
     border-radius: 15px;
 }
+
 
 footer {
     padding: 50px;
@@ -67,4 +68,18 @@ footer p {
 .self-promo:hover {
     color: red;
     font-size: large;
+}
+
+@media screen and (max-width: 1600px) {
+    .game-window {
+        height: 540px;
+    }
+
+    header .caveclub-logo {
+        height: 80px;
+    }
+    footer .caveclub-logo {
+        height: 160px;
+        margin: 40px 0;
+    }
 }
