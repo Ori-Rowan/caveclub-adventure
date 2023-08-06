@@ -13,7 +13,10 @@ body {
 header {
     background-color: var(---color-tan);    
     display: flex;
+    position: fixed;
     justify-content: center;
+    width: 100%;
+    height: 100px;
 }
 
 header .caveclub-logo {
@@ -24,6 +27,10 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: -o-calc(100vh - 100px); /* opera */
+    height: -webkit-calc(100vh - 100px); /* google, safari */
+    height: -moz-calc(100vh - 100px); /* firefox */
+    padding-top: 100px;
 }
 
 .game-window {
@@ -67,21 +74,4 @@ footer p {
 
 .self-promo:hover {
     color: red;
-    font-size: large;
-}
-
-/* TODO: finish responsivity, this one is not very good */
-
-@media screen and (max-width: 1600px) {
-    .game-window {
-        height: 540px;
-    }
-
-    header .caveclub-logo {
-        height: 80px;
-    }
-    footer .caveclub-logo {
-        height: 160px;
-        margin: 40px 0;
-    }
 }
