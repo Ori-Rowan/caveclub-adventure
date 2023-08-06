@@ -9,10 +9,10 @@ class Scene {
 
 	/**
 	 * * Sets the background for a scene.
-	 * @param img - file name, in 'scene/' folder
+	 * @param img - file name, in 'background/' folder
 	 */
 	setBackground(img) {
-		var path = "src/img/scene/" + img;
+		var path = "src/img/background/" + img;
 		this.gameWindow.css("background-image", 'url("' + path + '")');
 	}
 }
