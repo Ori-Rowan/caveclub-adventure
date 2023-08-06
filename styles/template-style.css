@@ -1,7 +1,7 @@
 /* this style is for the page only, it does not style the game objects or anything*/
 
 :root {
-    ---color-tan: #F9F7C0;
+    --color-tan: #F9F7C0;
     --color-green: #5F8C47;
 }
 
@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: var(---color-tan);    
+    background-color: var(--color-tan);    
     display: flex;
     position: fixed;
     justify-content: center;
@@ -27,16 +27,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: -o-calc(100vh - 100px); /* opera */
-    height: -webkit-calc(100vh - 100px); /* google, safari */
-    height: -moz-calc(100vh - 100px); /* firefox */
+    height: calc(100vh - 100px);
     padding-top: 100px;
 }
 
 .game-window {
-    margin: 50px 0;
     aspect-ratio: 16 / 9;
-    height: 720px;
+    width: calc((90vh - 100px) * 16 / 9); 
+    max-width: 95%;
     background-color: white;
     background-repeat: no-repeat;
     background-size: cover;
@@ -47,7 +45,7 @@ main {
 
 footer {
     padding: 50px;
-    background-color: var(---color-tan);    
+    background-color: var(--color-tan);    
     display: flex;
     justify-content: center;
 }
