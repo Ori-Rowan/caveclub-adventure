@@ -12,9 +12,25 @@ function set_background(img) {
     );
 }
 
+/** load_sprite()
+* * creates a sprite somewhere in the scene
+* ? load an image 
+* @param object - array with attributes to the object 
+* ! must have these attributes
+* @param img - file name for the sprite img
+* @param coords - two value array with [x,y] coordinates
+* TODO: make load and show different functions
+* TODO: make an object function
+*/
+
+function load_sprite(object){
+    var path = 'src/img/scene/'+img;
+       
+}
 
 
 // Start the code
 $(document).ready(function(){
     set_background('test-1.jpg');
+    load_sprite(['test-ball', [100, 200]]);
 })
