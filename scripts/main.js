@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	game = new Game();
-    //test
+
+	//test
 	game.loadScene({ background: "test-1.jpg" });
 });
