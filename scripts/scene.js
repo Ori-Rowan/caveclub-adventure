@@ -7,14 +7,11 @@ class Scene {
 
 		this.setBackground(this.background);
 
-		// TODO: iterate through all sprites and load them
-		/*
-		for (let sprite in this.sprites) {
-			sprite = this.sprites.sprite;
-			console.log(sprite);
-			//this.loadSprite(sprite.img);
-		}
-        */
+		// iterate through sprites and load them
+		this.loadedSprites = [];
+		Object.values(this.sprites).forEach((val) =>
+			this.loadSprite(this.gameWindow, val)
+		);
 	}
 
 	/**
@@ -31,6 +28,6 @@ class Scene {
 	 * @param spriteArgs - dictionarry with arguments for the sprite {img: img path, coords: {x : x-position, y: y-position}, properties: {sprite properties}}
 	 */
 	loadSprite(gameWindow, spriteArgs) {
-		sprite = new Sprite(gameWindow, spriteArgs);
+		let sprite = new Sprite(gameWindow, spriteArgs);
 	}
 }

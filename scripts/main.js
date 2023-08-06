@@ -6,7 +6,7 @@ $(document).ready(function () {
 		background: "test-1.jpg",
 		sprites: {
 			sprite1: {
-				img: "test-ball.png",
+				img: "test-sprite1.png",
 				coords: { x: 50, y: 100 },
 				properties: {},
 			},

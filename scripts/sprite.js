@@ -2,17 +2,17 @@
 class Sprite {
 	constructor(gameWindow, spriteArgs) {
 		this.gameWindow = gameWindow;
-		imgPath = spriteArgs.img;
+		this.imgPath = spriteArgs.img;
 
-		this.loadSprite(imgPath);
+		this.constructSprite(this.gameWindow, this.imgPath);
 	}
 
 	// TODO: create the load sprite function
-	/*
-	loadSprite(imgPath) {
+
+	constructSprite(gameWindow, imgPath) {
 		// create html element
-		img = document.createElement("img");
-		img.src = imgPath;
+		let img = document.createElement("img");
+		img.src = "src/img/sprites/" + imgPath;
+		gameWindow.append(img);
 	}
-    */
 }
