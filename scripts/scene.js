@@ -24,7 +24,7 @@ class Scene {
 	}
 
 	/**
-	 * loads an object that handles a sprite into the scene
+	 * * loads an object that handles a sprite into the scene
 	 * @param spriteArgs - dictionarry with arguments for the sprite {img: img path, coords: {x : x-position, y: y-position}, properties: {sprite properties}}
 	 */
 	loadSprite(gameWindow, spriteArgs) {

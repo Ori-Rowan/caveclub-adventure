@@ -10,6 +10,11 @@ $(document).ready(function () {
 				coords: { x: 50, y: 100 },
 				properties: {},
 			},
+			sprite2: {
+				img: "test-sprite2.png",
+				coords: { x: 200, y: 200 },
+				properties: {},
+			},
 		},
 	};
 
