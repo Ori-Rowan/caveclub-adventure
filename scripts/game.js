@@ -9,6 +9,6 @@ class Game {
 	 * @param sceneArgs dictionary must contain {background: path, sprites: {sprite dict}}
 	 */
 	loadScene(sceneArgs) {
-		scene = new Scene(this.gameWindow, sceneArgs);
+		let scene = new Scene(this.gameWindow, sceneArgs);
 	}
 }

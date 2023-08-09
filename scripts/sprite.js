@@ -13,10 +13,19 @@ class Sprite {
 	 * @param {*} imgPath the file name in the /src/omg/sprite folder, extracted from spireArgs
 	 */
 	constructSprite(imgPath) {
-		// create html element
-		let img = document.createElement("img");
+		// create html canvas
+		this.canvas = document.createElement("canvas");
+		this.gameWindow.append(this.canvas);
+
+		// draw the img on the canvas and adjust the size to match the img
+		this.context = this.canvas.getContext("2d");
+		let img = new Image();
 		img.src = "src/img/sprites/" + imgPath;
-		this.gameWindow.append(img);
+		img.onload = () => {
+			this.canvas.width = img.width;
+			this.canvas.height = img.height;
+			context.drawImage(img, 0, 0);
+		};
 	}
 
 	// TODO: create outline on hover
