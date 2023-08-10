@@ -5,7 +5,7 @@ class Sprite {
 		this.imgPath = spriteArgs.img;
 		this.coords = spriteArgs.coords;
 
-		this.constructSprite(this.imgPath);
+		this.drawSprite(this.imgPath, this.coords);
 	}
 
 	// TODO: load the sprite to coords
@@ -13,7 +13,7 @@ class Sprite {
 	 * * loads the sprite into the game window, to desired position
 	 * @param {*} imgPath the file name in the /src/omg/sprite folder, extracted from spireArgs
 	 */
-	constructSprite(imgPath) {
+	drawSprite(imgPath, coords) {
 
 		// TODO: size the image to the current window size
 		// draw the img on the canvas and adjust the size to match the img
@@ -21,9 +21,10 @@ class Sprite {
 		let img = new Image();
 		img.src = "src/img/sprites/" + imgPath;
 		img.onload = () => {
-			this.context.drawImage(img, 0, 0);
+			this.context.drawImage(img, coords.x, coords.y);
 		};
 	}
+
 
 	// TODO: create outline on hover
 	// this should help create outline path, saving for later: https://stackoverflow.com/questions/23983461/creating-a-path-from-the-edge-of-an-image
