@@ -20,7 +20,7 @@ class Scene {
 	 */
 	setBackground(img) {
 		var path = "src/img/background/" + img;
-		this.gameWindow.css("background-image", 'url("' + path + '")');
+		this.gameWindow.style.backgroundImage = 'url("' + path + '")';
 	}
 
 	/**

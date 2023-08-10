@@ -1,7 +1,8 @@
 // main object for the whole game
 class Game {
 	constructor() {
-		this.gameWindow = $("#gameWindow");
+		this.gameWindow = document.getElementById("gameWindow");
+        console.log(this.gameWindow);
 	}
 
 	/**
