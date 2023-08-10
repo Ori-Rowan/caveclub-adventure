@@ -4,7 +4,12 @@ class Scene {
 		this.gameWindow = gameWindow;
 		this.background = sceneArgs.background;
 		this.sprites = sceneArgs.sprites;
+        this.context = this.gameWindow.getContext('2d')
 
+        // clear the old scene
+        this.context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
+        
+        // set new beckground
 		this.setBackground(this.background);
 
 		// iterate through sprites and load them
@@ -30,4 +35,6 @@ class Scene {
 	loadSprite(gameWindow, spriteArgs) {
 		let sprite = new Sprite(gameWindow, spriteArgs);
 	}
+
+
 }

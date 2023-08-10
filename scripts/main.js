@@ -42,4 +42,8 @@ $(document).ready(function () {
 
 	//test
 	game.loadScene(gameScript.scene1);
+
+    game.gameWindow.onclick = function(){
+        game.loadScene(gameScript.scene2)
+    }
 });
