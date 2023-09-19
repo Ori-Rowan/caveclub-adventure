@@ -13,10 +13,11 @@ class Scene {
 		this.setBackground(this.background);
 
 		// iterate through sprites and load them
-		this.loadedSprites = [];
+		this.loadedSprites = new Array();
 		Object.values(this.sprites).forEach((val) =>
-			this.loadSprite(this.gameWindow, val)
+			this.loadSprite(this.gameWindow, val)            
 		);
+        console.log(this.loadedSprites);
 	}
 
 	/**
@@ -33,7 +34,7 @@ class Scene {
 	 * @param spriteArgs - dictionarry with arguments for the sprite {img: img path, coords: {x : x-position, y: y-position}, properties: {sprite properties}}
 	 */
 	loadSprite(gameWindow, spriteArgs) {
-		let sprite = new Sprite(gameWindow, spriteArgs);
+		this.loadedSprites.push(new Sprite(gameWindow, spriteArgs));
 	}
 
 

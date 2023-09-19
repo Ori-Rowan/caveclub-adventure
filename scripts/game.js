@@ -2,8 +2,6 @@
 class Game {
 	constructor() {
 		this.gameWindow = document.getElementById("gameWindow");
-
-        console.log(this.gameWindow.height, this.gameWindow.width)
 	}
 
 	/**

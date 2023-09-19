@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	game = new Game();
 
-	//test scene
+	//test gameScript
 	gameScript = {
 		scene1: {
 			background: "test_background_1.jpg",
@@ -43,7 +43,4 @@ $(document).ready(function () {
 	//test
 	game.loadScene(gameScript.scene1);
 
-    game.gameWindow.onclick = function(){
-        game.loadScene(gameScript.scene2)
-    }
 });
