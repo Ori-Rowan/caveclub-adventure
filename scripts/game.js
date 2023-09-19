@@ -4,7 +4,6 @@ class Game {
 		this.gameWindow = document.getElementById("gameWindow");
 	}
 
-    
 	/**
 	 * * loads a scene with bg and sprites
 	 * @param sceneArgs dictionary must contain {background: path, sprites: {sprite dict}}

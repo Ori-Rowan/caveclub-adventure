@@ -7,7 +7,7 @@ class Scene {
 		this.sprites = sceneArgs.sprites;
 		this.context = this.gameWindow.getContext("2d");
 
-        this.context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
+		this.context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
 
 		//load the scene
 		this.loadScene();

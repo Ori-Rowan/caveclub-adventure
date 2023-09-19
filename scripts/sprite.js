@@ -1,7 +1,7 @@
 // object to handle a sprite in a scene
 class Sprite {
 	constructor(game, spriteArgs) {
-        this.game = game;
+		this.game = game;
 		this.gameWindow = game.gameWindow;
 		this.imgPath = spriteArgs.img;
 		this.coords = spriteArgs.coords;
@@ -49,7 +49,7 @@ class Sprite {
 				mouseY >= coords.y &&
 				mouseY <= coords.y + size.height
 			) {
-				this.game.newScene(gameScript.scene2)
+				this.game.newScene(gameScript.scene2);
 			}
 		});
 	}
