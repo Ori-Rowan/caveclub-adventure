@@ -4,20 +4,20 @@ class Scene {
 		this.gameWindow = gameWindow;
 		this.background = sceneArgs.background;
 		this.sprites = sceneArgs.sprites;
-        this.context = this.gameWindow.getContext('2d')
+		this.context = this.gameWindow.getContext("2d");
 
-        // clear the old scene
-        this.context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
-        
-        // set new beckground
+		// clear the old scene
+		this.context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
+
+		// set new beckground
 		this.setBackground(this.background);
 
 		// iterate through sprites and load them
 		this.loadedSprites = new Array();
 		Object.values(this.sprites).forEach((val) =>
-			this.loadSprite(this.gameWindow, val)            
+			this.loadSprite(this.gameWindow, val)
 		);
-        console.log(this.loadedSprites);
+		console.log(this.loadedSprites);
 	}
 
 	/**
@@ -36,6 +36,4 @@ class Scene {
 	loadSprite(gameWindow, spriteArgs) {
 		this.loadedSprites.push(new Sprite(gameWindow, spriteArgs));
 	}
-
-
 }
