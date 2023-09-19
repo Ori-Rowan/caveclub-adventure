@@ -38,13 +38,20 @@ class Sprite {
      */
     clickArea(coords, size) {
         this.gameWindow.addEventListener("click", (event) => {
+            // console.log('mouseX:', event.offsetX, 'mouseY:', event.offsetY, 'spriteX:', coords.x, 'spriteY:', coords.y)
+            // console.log(this.gameWindow.offsetWidth, this.gameWindow.offsetHeight);
+            // calculate where mouse is on 1920/1080 canvas even when resized
+            let mouseX = Math.ceil(event.offsetX / this.gameWindow.offsetWidth * 1920);
+            let mouseY = Math.ceil(event.offsetY / this.gameWindow.offsetHeight * 1080);
+            console.log('mouseX:', mouseX);
+            
             // check if mouse is in the area
-            if (event.offsetX >= coords.x && event.offsetX <= coords.x + size.width && event.offsetY >= coords.y && event.offsetY <= coords.y + size.height) {
-                alert('har har har har');
+            if (mouseX >= coords.x && mouseX <= coords.x + size.width && mouseY >= coords.y && mouseY <= coords.y + size.height) {
+                alert(this.imgPath);
             }
         });
     }
 
-    
+
 
 }
