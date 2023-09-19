@@ -1,11 +1,12 @@
 // object to handle a sprite in a scene
 class Sprite {
-	constructor(gameWindow, spriteArgs) {
-		this.gameWindow = gameWindow;
+	constructor(game, spriteArgs) {
+        this.game = game;
+		this.gameWindow = game.gameWindow;
 		this.imgPath = spriteArgs.img;
 		this.coords = spriteArgs.coords;
 
-		this.drawSprite(this.imgPath, this.coords);
+		this.loadSprite(this.imgPath, this.coords);
 	}
 
 	/**
@@ -13,7 +14,7 @@ class Sprite {
 	 * @param {*} imgPath the file name in the /src/omg/sprite folder, extracted from spriteArgs
 	 * @param {*} coords the coords of where the spirte is on the canvas, extracted from spriteArgs
 	 */
-	drawSprite(imgPath, coords) {
+	loadSprite(imgPath, coords) {
 		// draw the img on the canvas at desired coords
 		this.context = this.gameWindow.getContext("2d");
 		let img = new Image();
@@ -48,7 +49,7 @@ class Sprite {
 				mouseY >= coords.y &&
 				mouseY <= coords.y + size.height
 			) {
-				alert(this.imgPath);
+				this.game.newScene(gameScript.scene2)
 			}
 		});
 	}

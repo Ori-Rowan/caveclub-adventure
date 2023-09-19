@@ -41,7 +41,7 @@ $(document).ready(function () {
     
     // create the game
     game = new Game();
-    
+
 	//test
-	game.loadScene(gameScript.scene1);
+	game.newScene(gameScript.scene1);
 });
