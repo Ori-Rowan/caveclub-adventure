@@ -1,7 +1,7 @@
 // object to handle a sprite in a scene
 class Sprite {
-	constructor(gameWindow, spriteArgs) {
-		this.gameWindow = gameWindow;
+	constructor(game, spriteArgs) {
+		this.gameWindow = game.gameWindow;
 		this.imgPath = spriteArgs.img;
 		this.coords = spriteArgs.coords;
 
@@ -29,7 +29,6 @@ class Sprite {
 	// TODO: create outline on hover
 	// this should help create outline path, saving for later: https://stackoverflow.com/questions/23983461/creating-a-path-from-the-edge-of-an-image
 
-	// TODO: make clickable non-transparent part and desired effect
 
     /**
      * * create a clickable area on the canvas around the sprite
@@ -38,16 +37,13 @@ class Sprite {
      */
     clickArea(coords, size) {
         this.gameWindow.addEventListener("click", (event) => {
-            // console.log('mouseX:', event.offsetX, 'mouseY:', event.offsetY, 'spriteX:', coords.x, 'spriteY:', coords.y)
-            // console.log(this.gameWindow.offsetWidth, this.gameWindow.offsetHeight);
             // calculate where mouse is on 1920/1080 canvas even when resized
             let mouseX = Math.ceil(event.offsetX / this.gameWindow.offsetWidth * 1920);
             let mouseY = Math.ceil(event.offsetY / this.gameWindow.offsetHeight * 1080);
-            console.log('mouseX:', mouseX);
             
             // check if mouse is in the area
             if (mouseX >= coords.x && mouseX <= coords.x + size.width && mouseY >= coords.y && mouseY <= coords.y + size.height) {
-                alert(this.imgPath);
+                this.game.loadScene('scene2')
             }
         });
     }

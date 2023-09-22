@@ -1,13 +1,12 @@
 $(document).ready(function () {
-	game = new Game();
-
-	//test gameScript
+    
+    //test gameScript
 	gameScript = {
 		scene1: {
 			background: "test_background_1.jpg",
 			sprites: {
 				sprite1: {
-					img: "test_sprite_1.png",
+                    img: "test_sprite_1.png",
 					coords: { x: 50, y: 100 },
 					properties: {},
 				},
@@ -24,15 +23,15 @@ $(document).ready(function () {
 			},
 		},
         scene2: {
-			background: "test_background_2.jpg",
+            background: "test_background_2.jpg",
 			sprites: {
-				sprite1: {
-					img: "test_sprite_3.png",
+                sprite1: {
+                    img: "test_sprite_3.png",
 					coords: { x: 50, y: 600 },
 					properties: {},
 				},
 				sprite2: {
-					img: "test_sprite_4.png",
+                    img: "test_sprite_4.png",
 					coords: { x: 800, y: 200 },
 					properties: {},
 				},
@@ -40,7 +39,10 @@ $(document).ready(function () {
 		},
 	};
 
-	//test
-	game.loadScene(gameScript.scene1);
+    // create game object
+    game = new Game(gameScript);
 
+    //test
+	game.loadScene('scene1');
+    
 });

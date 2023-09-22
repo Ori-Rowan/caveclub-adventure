@@ -1,6 +1,7 @@
 // main object for the whole game
 class Game {
-	constructor() {
+	constructor(gameScript) {
+        this.gameScript = gameScript;
 		this.gameWindow = document.getElementById("gameWindow");
 	}
 
@@ -8,7 +9,8 @@ class Game {
 	 * * loads a scene with bg and sprites
 	 * @param sceneArgs dictionary must contain {background: path, sprites: {sprite dict}}
 	 */
-	loadScene(sceneArgs) {
-		let scene = new Scene(this.gameWindow, sceneArgs);
+	loadScene(sceneName) {
+        let sceneArgs = this.gameScript[sceneName];
+		let scene = new Scene(this, sceneArgs);
 	}
 }
