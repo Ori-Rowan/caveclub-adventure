@@ -1,6 +1,7 @@
 // object to handle a sprite in a scene
 class Sprite {
 	constructor(game, spriteArgs) {
+        this.game = game
 		this.gameWindow = game.gameWindow;
 		this.imgPath = spriteArgs.img;
 		this.coords = spriteArgs.coords;
@@ -43,7 +44,7 @@ class Sprite {
             
             // check if mouse is in the area
             if (mouseX >= coords.x && mouseX <= coords.x + size.width && mouseY >= coords.y && mouseY <= coords.y + size.height) {
-                this.game.loadScene('scene2')
+                this.game.sceneLoader.loadScene('scene2')
             }
         });
     }
