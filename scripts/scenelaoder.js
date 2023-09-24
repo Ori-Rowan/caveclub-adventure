@@ -6,6 +6,9 @@ class SceneLoader {
         this.loadedSprites = new Array();
     }
 
+    /**
+     * load the scene and sprites
+     */
     loadScene(sceneName) {
         let sceneArgs = this.game.gameScript[sceneName];
         // deload old scene
@@ -16,15 +19,14 @@ class SceneLoader {
         this.loadSprites(sceneArgs.sprites);
     }
 
+    /**
+     * clear the canvas
+     * TODO: deload the sprites
+     */
     deloadScene() {
-        let context = this.gameWindow.getContext("2d");
+        let context = this.gameWindow.getContext('2d');
         // clear the old scene
-        context.clearRect(
-            0,
-            0,
-            this.gameWindow.width,
-            this.gameWindow.height
-        );
+        context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
     }
 
     /**
@@ -35,7 +37,10 @@ class SceneLoader {
         var path = 'src/img/background/' + img;
         this.gameWindow.style.backgroundImage = 'url("' + path + '")';
     }
-
+    /**
+     *
+     * @param {*} sprites sprites that will load for the scene
+     */
     loadSprites(sprites) {
         //iterate through sprites and load them
         Object.values(sprites).forEach((val) =>
