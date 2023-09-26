@@ -4,8 +4,17 @@ class Sprite {
         this.game = game;
         this.gameWindow = game.gameWindow;
         this.spriteArgs = spriteArgs;
+        this.stateArgs = this.getStateArgs(this.spriteArgs)
+        
+        
+        this.drawSprite(this.stateArgs.img, this.stateArgs.coords);
+    }
 
-        this.drawSprite(this.spriteArgs.img, this.spriteArgs.coords);
+    getStateArgs(spriteArgs){
+        let currentState = spriteArgs.currentState;
+        currentState = 'state'+String(currentState);
+        let stateArgs = spriteArgs[currentState];
+        return stateArgs;
     }
 
     /**
@@ -47,7 +56,7 @@ class Sprite {
                 mouseY >= coords.y &&
                 mouseY <= coords.y + size.height
             ) {
-                this.game.sceneLoader.loadScene('scene2');
+                this.game.sceneLoader.loadScene('scene1');
             }
         });
     }
