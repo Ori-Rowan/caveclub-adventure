@@ -1,0 +1,20 @@
+.inventory {
+    width: calc((90vh - 100px) * 16 / 9);    
+    height: 500px;
+	max-width: 95%;
+    height: 0;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.inventoryItem {
+	aspect-ratio: 1/1;
+	width: 10%;
+    background-color: white;
+    margin: 1%;
+	border: solid black 3px;
+	border-radius: 5px;
+    display: inline-block;
+}

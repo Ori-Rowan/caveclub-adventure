@@ -3,13 +3,13 @@ $(document).ready(function () {
 	gameScript = {
 		scenes: {
 			garden: {
-				background: "test_background_1.jpg",
+				background: "garden.jpg",
 				sprites: {
 					lemonPlot: {
 						currentState: 0,
 						state0: {
-							img: "garden_plot.png",
-							coords: { x: 1000, y: 600 },
+							img: "lemonboy-garden.png",
+							coords: { x: 1246, y: 780 },
 							type: "door",
 							path: "lemonBoy",
 						},
@@ -31,8 +31,8 @@ $(document).ready(function () {
 					kitchenDoor: {
 						currentState: 0,
 						state0: {
-							img: "test_sprite_4.png",
-							coords: { x: 10, y: 200 },
+							img: "door-garden.png",
+							coords: { x: 73, y: 153 },
 							type: "door",
 							path: "kitchen",
 						},
