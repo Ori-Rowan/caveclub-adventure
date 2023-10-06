@@ -86,11 +86,13 @@ class Sprite {
 		}
 
 		// if type is chest then give item and change state
-		// TODO: give item
-        if (type == "chest") {
-            // change state
-            this.spriteArgs.currentState++;
-            // reload scene
+		if (type == "chest") {
+			let reward = this.stateArgs.reward;
+			// give item to player
+			this.game.itemHandler.addItem(reward);
+			// change state
+			this.spriteArgs.currentState++;
+			// reload scene
 			this.game.sceneLoader.reloadScene();
 		}
 	}

@@ -10,7 +10,7 @@ class SceneLoader {
 
 	// load a new sceme
 	loadScene(sceneName) {
-        // deload old scene
+		// deload old scene
 		this.deloadScene();
 		// save current scene
 		this.currentScene = sceneName;

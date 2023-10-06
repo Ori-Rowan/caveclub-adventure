@@ -4,5 +4,6 @@ class Game {
 		this.gameScript = gameScript;
 		this.gameWindow = document.getElementById("gameWindow");
 		this.sceneLoader = new SceneLoader(this);
+		this.itemHandler = new ItemHandler(this);
 	}
 }
