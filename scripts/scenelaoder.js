@@ -27,6 +27,10 @@ class SceneLoader {
 		let context = this.gameWindow.getContext("2d");
 		// clear the old scene
 		context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
+        Object.values(this.loadedSprites).forEach((val) =>
+			val.controller.abort()
+		);
+        
 	}
 
 	/**
@@ -46,5 +50,6 @@ class SceneLoader {
 		Object.values(sprites).forEach((val) =>
 			this.loadedSprites.push(new Sprite(this.game, val))
 		);
+        
 	}
 }

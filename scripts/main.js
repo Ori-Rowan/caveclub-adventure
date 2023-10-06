@@ -13,6 +13,15 @@ $(document).ready(function () {
 						path: "garden",
 					},
 				},
+                gardenPlot: {
+                    currentState: 0,
+                    state0: {
+						img: "garden_plot.png",
+						coords: { x: 100, y: 200 },
+						type: "door",
+						path: "menu",
+					},
+                },
 			},
 		},
 		garden: {

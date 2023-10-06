@@ -5,6 +5,7 @@ class Sprite {
 		this.gameWindow = game.gameWindow;
 		this.spriteArgs = spriteArgs;
 		this.stateArgs = this.getStateArgs(this.spriteArgs);
+        this.controller = new AbortController();
 
 		this.drawSprite(this.stateArgs.img, this.stateArgs.coords);
 	}
@@ -39,6 +40,7 @@ class Sprite {
 	 * @param {*} size size of the sprite that will determine width and height of clickable rectangle are
 	 */
 	clickArea(coords, size) {
+        let { signal } = this.controller;
 		this.gameWindow.addEventListener("click", (event) => {
 			// calculate where mouse is on 1920/1080 canvas even when resized
 			let mouseX = Math.ceil(
@@ -57,7 +59,9 @@ class Sprite {
 			) {
                 this.clickFunction();
             }
-		});
+		}, 
+        { signal }
+        );
 	}
     
     clickFunction(){
