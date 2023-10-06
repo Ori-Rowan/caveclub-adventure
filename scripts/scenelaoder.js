@@ -15,7 +15,7 @@ class SceneLoader {
 		// save current scene
 		this.currentScene = sceneName;
 
-		let sceneArgs = this.game.gameScript[sceneName];
+		let sceneArgs = this.game.gameScript.scenes[sceneName];
 		// set new beckground
 		this.setBackground(sceneArgs.background);
 		// load sprites
