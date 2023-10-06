@@ -55,8 +55,16 @@ class Sprite {
 				mouseY >= coords.y &&
 				mouseY <= coords.y + size.height
 			) {
-				this.game.sceneLoader.loadScene("scene1");
-			}
+                this.clickFunction();
+            }
 		});
 	}
+    
+    clickFunction(){
+        let type = this.stateArgs.type;
+        if (type == 'door') {
+            let path = this.stateArgs.path;
+            this.game.sceneLoader.loadScene(path);
+        }
+    }
 }

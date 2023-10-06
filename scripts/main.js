@@ -1,36 +1,32 @@
 $(document).ready(function () {
 	//test gameScript
 	gameScript = {
-		scene0: {
-			background: "test_background_2.jpg",
+		menu: {
+			background: "test_background_3.jpg",
 			sprites: {
-				sprite0: {
+				startButton: {
 					currentState: 0,
 					state0: {
-						img: "test_sprite_4.png",
+						img: "start_button.png",
 						coords: { x: 800, y: 400 },
 						type: "door",
-						path: "scene2",
+						path: "garden",
 					},
 				},
 			},
 		},
-		scene1: {
+		garden: {
 			background: "test_background_1.jpg",
 			sprites: {
-				sprite0: {
-					currentState: 0,
-					state0: {
-						img: "test_sprite_2.png",
-						coords: { x: 900, y: 400 },
+                gardenPlot: {
+                    currentState: 0,
+                    state0: {
+						img: "garden_plot.png",
+						coords: { x: 100, y: 200 },
 						type: "door",
+						path: "menu",
 					},
-					state1: {
-						img: "test_sprite_1.png",
-						coords: { x: 50, y: 100 },
-						type: "door",
-					},
-				},
+                },
 			},
 		},
 	};
@@ -39,5 +35,5 @@ $(document).ready(function () {
 	game = new Game(gameScript);
 
 	//test
-	game.sceneLoader.loadScene("scene0");
+	game.sceneLoader.loadScene("menu");
 });
