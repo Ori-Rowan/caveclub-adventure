@@ -1,5 +1,6 @@
 $(document).ready(function () {
-	//test gameScript
+	// game script used to load the entire game
+	// TODO: move to a different JS file
 	gameScript = {
 		scenes: {
 			garden: {
@@ -37,14 +38,6 @@ $(document).ready(function () {
 							path: "kitchen",
 						},
 					},
-                    doorRoof: {
-                        currentState: 0,
-                        state0: {
-                            img: 'roof-garden.png',
-                            coords: {x: 0, y: 30},
-                            type: 'decoration'
-                        }
-                    },
 				},
 			},
 			lemonBoy: {
@@ -57,6 +50,20 @@ $(document).ready(function () {
 							coords: { x: 1000, y: 800 },
 							type: "door",
 							path: "garden",
+						},
+					},
+					cucumberPlant: {
+						currentState: 0,
+						state0: {
+							img: "cucumber_plant.png",
+							coords: { x: 570, y: 680 },
+							type: "chest",
+							reward: "necoIdk",
+						},
+						state1: {
+							img: "nocucumber_plant.png",
+							coords: { x: 570, y: 680 },
+							type: "decoration",
 						},
 					},
 				},
@@ -130,13 +137,16 @@ $(document).ready(function () {
 			cucumber: {
 				img: "cucumber.png",
 			},
+			necoIdk: {
+				img: "necoIdk.png",
+			},
 		},
 	};
 
 	// create game object
 	game = new Game(gameScript);
 
-	//test
+	// load initial scene
+	//! this will not be here later
 	game.sceneLoader.loadScene("garden");
-
 });

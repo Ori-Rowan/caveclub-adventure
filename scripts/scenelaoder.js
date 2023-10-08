@@ -4,18 +4,18 @@ class SceneLoader {
 		// define important attributes
 		this.game = game;
 		this.gameWindow = game.gameWindow;
+		// this array contains all instances of currently loaded sprites on the scene
 		this.loadedSprites = new Array();
+		// this stores the current scene name in game script
 		this.currentScene = "";
 	}
 
 	// load a new sceme
 	loadScene(sceneName) {
-		// deload old scene
 		this.deloadScene();
-		// save current scene
 		this.currentScene = sceneName;
-
 		let sceneArgs = this.game.gameScript.scenes[sceneName];
+
 		// set new beckground
 		this.setBackground(sceneArgs.background);
 		// load sprites
@@ -25,7 +25,7 @@ class SceneLoader {
 	// deload the old scene
 	deloadScene() {
 		let context = this.gameWindow.getContext("2d");
-		// clear the old scene
+		// clear the old scene, erese sprites visually
 		context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
 		// remove all the click areas - controller abbort for each sprite
 		Object.values(this.loadedSprites).forEach(function (val) {
@@ -50,6 +50,7 @@ class SceneLoader {
 	}
 
 	// load the current scene again
+	//? used when sprite changes state
 	reloadScene() {
 		this.loadScene(this.currentScene);
 	}

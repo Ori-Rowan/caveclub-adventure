@@ -5,14 +5,15 @@ class Sprite {
 		this.game = game;
 		this.gameWindow = game.gameWindow;
 		this.spriteArgs = spriteArgs;
-		this.stateArgs = this.getStateArgs(this.spriteArgs);
+		this.stateArgs = this.getStateArgs();
 
 		// draw the sprite on canvas and create click area
 		this.drawSprite();
 	}
 
 	// this will get the current state args
-	getStateArgs(spriteArgs) {
+	getStateArgs() {
+		let spriteArgs = this.spriteArgs;
 		let currentState = spriteArgs.currentState;
 		currentState = "state" + String(currentState);
 		let stateArgs = spriteArgs[currentState];
@@ -20,8 +21,8 @@ class Sprite {
 	}
 
 	// this draws sprite on the canvas on desired position and also create click area
+	//TODO: separate click are from this function
 	drawSprite() {
-		// define variables needed
 		let imgPath = this.stateArgs.img;
 		let coords = this.stateArgs.coords;
 
@@ -40,7 +41,6 @@ class Sprite {
 
 	// this will create a clickable area over the object on the canvas
 	clickArea(size) {
-		// define important variables
 		let coords = this.stateArgs.coords;
 
 		// this thing is important, cuz it is used to remove event listener
@@ -52,6 +52,7 @@ class Sprite {
 			"click",
 			(event) => {
 				// calculate where mouse is on 1920/1080 canvas even when resized
+				//! this isnt completly accurate
 				let mouseX = Math.ceil(
 					(event.offsetX / this.gameWindow.offsetWidth) * 1920
 				);
@@ -70,13 +71,13 @@ class Sprite {
 					this.clickFunction();
 				}
 			},
+			// link it to the controler
 			{ signal }
 		);
 	}
 
 	// this handles what happens when object is clicked based on type
 	clickFunction() {
-		// define variables
 		let type = this.stateArgs.type;
 
 		// if type is door then load desired scene
