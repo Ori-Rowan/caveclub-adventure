@@ -3,7 +3,7 @@ $(document).ready(function () {
 	gameScript = {
 		scenes: {
 			garden: {
-				background: "garden.jpg",
+				background: "garden.png",
 				sprites: {
 					lemonPlot: {
 						currentState: 0,
@@ -18,13 +18,13 @@ $(document).ready(function () {
 						currentState: 0,
 						state0: {
 							img: "cucumber_plant.png",
-							coords: { x: 0, y: 600 },
+							coords: { x: 370, y: 680 },
 							type: "chest",
 							reward: "cucumber",
 						},
 						state1: {
 							img: "nocucumber_plant.png",
-							coords: { x: 0, y: 600 },
+							coords: { x: 370, y: 680 },
 							type: "decoration",
 						},
 					},
@@ -37,6 +37,14 @@ $(document).ready(function () {
 							path: "kitchen",
 						},
 					},
+                    doorRoof: {
+                        currentState: 0,
+                        state0: {
+                            img: 'roof-garden.png',
+                            coords: {x: 0, y: 30},
+                            type: 'decoration'
+                        }
+                    },
 				},
 			},
 			lemonBoy: {
@@ -130,4 +138,5 @@ $(document).ready(function () {
 
 	//test
 	game.sceneLoader.loadScene("garden");
+
 });

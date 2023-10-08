@@ -1,5 +1,5 @@
 .inventory {
-    width: calc((90vh - 100px) * 16 / 9);    
+    width: 100%;    
     height: 500px;
 	max-width: 95%;
     height: 0;
@@ -18,3 +18,20 @@
 	border-radius: 5px;
     display: inline-block;
 }
+
+.dialogue-box {
+    position: absolute;
+    bottom: 5%;
+    left: 2.5%;
+    background-color: aliceblue;
+    border: solid black 3px;
+	border-radius: 5px;
+    width: 90%;
+    font-family: 'Handlee';
+    padding: 0 2.5%;
+    font-size: 1vW;
+}
+.dialogue-box p {
+    font-weight: 600;
+}
+

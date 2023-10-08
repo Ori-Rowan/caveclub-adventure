@@ -36,14 +36,19 @@ main {
 
 .game-window {
 	aspect-ratio: 16 / 9;
-	width: calc((90vh - 100px) * 16 / 9);
-	max-width: 95%;
+	width: 100%;
 	background-color: white;
 	background-repeat: no-repeat;
 	background-size: cover;
 	border: solid black 5px;
 	border-radius: 15px;
     z-index: 1;
+}
+
+.game-container{ 
+    position: relative;
+    width: calc((90vh - 100px) * 16 / 9);
+	max-width: 95%;
 }
 
 footer {
