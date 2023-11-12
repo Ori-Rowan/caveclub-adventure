@@ -52,20 +52,6 @@ $(document).ready(function () {
 							path: "garden",
 						},
 					},
-					cucumberPlant: {
-						currentState: 0,
-						state0: {
-							img: "cucumber_plant.png",
-							coords: { x: 570, y: 680 },
-							type: "chest",
-							reward: "necoIdk",
-						},
-						state1: {
-							img: "nocucumber_plant.png",
-							coords: { x: 570, y: 680 },
-							type: "decoration",
-						},
-					},
 				},
 			},
 			kitchen: {
