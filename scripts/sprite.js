@@ -7,10 +7,8 @@ class Sprite {
 		this.spriteArgs = spriteArgs;
 		this.stateArgs = this.getStateArgs();
 
-       
-        // draw the sprite on canvas and create click area
-        this.drawSprite();
-       
+		// draw the sprite on canvas and create click area
+		this.drawSprite();
 	}
 
 	// this will get the current state args
@@ -90,46 +88,62 @@ class Sprite {
 
 		// if type is chest then give item and change state
 		if (type == "chest") {
-            // get reward
+			// get reward
 			let reward = this.stateArgs.reward;
 			// give item to player
-			this.game.itemHandler.addItem(reward);            
-            // change state
-            this.changeState();
+			this.game.itemHandler.addItem(reward);
+			// change state
+			this.changeState();
 		}
 
-        // if type
-        if (type == "lock") {
-            // get item in use
-            let iteminUse = this.game.itemHandler.itemInUseName;
+		// if type us lock then check if player has the right key and change state
+		if (type == "lock") {
+			// get item in use
+			let iteminUse = this.game.itemHandler.itemInUseName;
 
-            // check if item in use is the right key
-            if (iteminUse == this.stateArgs.key) {
-                // remove key item in inventory
-                this.game.itemHandler.removeItemInUse();
+			// check if item in use is the right key
+			if (iteminUse == this.stateArgs.key) {
+				// remove key item in inventory
+				this.game.itemHandler.removeItemInUse();
 
-                // change state
-                this.changeState();
-            }
+				// change state
+				this.changeState();
+			}
+		}
 
-        }
-        
+		// type locked-chest then check if player has the right key, give item and change state
+		if (type == "locked-chest") {
+			// get item in use
+			let iteminUse = this.game.itemHandler.itemInUseName;
+
+			// check if item in use is the right key
+			if (iteminUse == this.stateArgs.key) {
+				// remove key item in inventory
+				this.game.itemHandler.removeItemInUse();
+
+				// get reward
+				let reward = this.stateArgs.reward;
+				// give item to player
+				this.game.itemHandler.addItem(reward);
+				// change state
+				this.changeState();
+			}
+		}
 	}
 
-    // change state, send possible signal and reload scene
-    changeState() {
-        // change state
-        this.spriteArgs.currentState++;
-        
-        // reload scene
-        this.game.sceneLoader.reloadScene();
-        
-        // send signal  
-        if (this.stateArgs.signal) {
-            let signal = this.stateArgs.signal;
-            this.game.gameScript.scenes[signal.scene].sprites[signal.sprite].currentState++;
-        }
-    }
+	// change state, send possible signal and reload scene
+	changeState() {
+		// change state
+		this.spriteArgs.currentState++;
+
+		// reload scene
+		this.game.sceneLoader.reloadScene();
+
+		// send signal
+		if (this.stateArgs.signal) {
+			let signal = this.stateArgs.signal;
+			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
+				.currentState++;
+		}
+	}
 }
-
-
