@@ -75,10 +75,9 @@ $(document).ready(function () {
 							path: "bananaBread",
 						},
 						state1: {
-							img: "bowl.png",
-							coords: { x: 1000, y: 300 },
-							type: "door",
-							path: "bananaBread",
+							img: "none.png",
+							coords: { x: 0, y: 0 },
+							type: "none",
 						},
 					},
 				},

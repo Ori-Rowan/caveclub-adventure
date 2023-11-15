@@ -90,13 +90,12 @@ class Sprite {
 
 		// if type is chest then give item and change state
 		if (type == "chest") {
+            // get reward
 			let reward = this.stateArgs.reward;
 			// give item to player
-			this.game.itemHandler.addItem(reward);
-			// change state
-			this.spriteArgs.currentState++;
-			// reload scene
-			this.game.sceneLoader.reloadScene();
+			this.game.itemHandler.addItem(reward);            
+            // change state
+            this.changeState();
 		}
 
         // if type
@@ -110,12 +109,27 @@ class Sprite {
                 this.game.itemHandler.removeItemInUse();
 
                 // change state
-                this.spriteArgs.currentState++;
-                this.game.sceneLoader.reloadScene();
+                this.changeState();
             }
 
         }
-
-
+        
 	}
+
+    // change state, send possible signal and reload scene
+    changeState() {
+        // change state
+        this.spriteArgs.currentState++;
+        
+        // reload scene
+        this.game.sceneLoader.reloadScene();
+        
+        // send signal  
+        if (this.stateArgs.signal) {
+            let signal = this.stateArgs.signal;
+            this.game.gameScript.scenes[signal.scene].sprites[signal.sprite].currentState++;
+        }
+    }
 }
+
+
