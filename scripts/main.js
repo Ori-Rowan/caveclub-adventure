@@ -95,6 +95,19 @@ $(document).ready(function () {
 							path: "kitchen",
 						},
 					},
+                    kitty: {
+                        currentState: 0,
+                        state0: {
+                            img: "test_sprite_2.png",
+                            coords: {x: 100, y: 100},
+                            type: "chest",
+                            reward: "necoIdk",
+                        },
+                        state1: {
+                            type: "none",
+                        },
+
+                    },
 					bananaBreadBowl: {
 						currentState: 0,
 						state0: {
@@ -107,10 +120,10 @@ $(document).ready(function () {
 							img: "bowl_with_flour.png",
 							coords: { x: 1000, y: 300 },
 							type: "chest",
-							key: "banana",
+							key: "necoIdk",
 							signal: { scene: "kitchen", sprite: "bowl" },
 						},
-						state1: {
+						state2: {
 							img: "",
 							coords: { x: 0, y: 0 },
 							type: "none",

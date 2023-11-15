@@ -7,8 +7,12 @@ class Sprite {
 		this.spriteArgs = spriteArgs;
 		this.stateArgs = this.getStateArgs();
 
-		// draw the sprite on canvas and create click area
-		this.drawSprite();
+        console.log(this.stateArgs);
+        // checks if type is none
+        if (this.stateArgs.type != "none") {
+            // draw the sprite on canvas and create click area
+            this.drawSprite();
+        }
 	}
 
 	// this will get the current state args
@@ -96,5 +100,9 @@ class Sprite {
 			// reload scene
 			this.game.sceneLoader.reloadScene();
 		}
+
+        if (type == "lock") {
+            
+        }
 	}
 }
