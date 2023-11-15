@@ -104,6 +104,8 @@ $(document).ready(function () {
                             reward: "necoIdk",
                         },
                         state1: {
+                            img: "none.png",
+                            coords: {x: 0, y: 0},
                             type: "none",
                         },
 
@@ -111,20 +113,20 @@ $(document).ready(function () {
 					bananaBreadBowl: {
 						currentState: 0,
 						state0: {
-							img: "bowl_with_flour.png",
+							img: "bowl.png",
 							coords: { x: 1000, y: 300 },
 							type: "lock",
-							key: "banana",
+							key: "necoIdk",
 						},
 						state1: {
 							img: "bowl_with_flour.png",
 							coords: { x: 1000, y: 300 },
 							type: "chest",
-							key: "necoIdk",
+							reward: "bowl_with_flour",
 							signal: { scene: "kitchen", sprite: "bowl" },
 						},
 						state2: {
-							img: "",
+							img: "none.png",
 							coords: { x: 0, y: 0 },
 							type: "none",
 						},
@@ -139,6 +141,9 @@ $(document).ready(function () {
 			necoIdk: {
 				img: "necoIdk.png",
 			},
+            bowl_with_flour: {
+                img: "bowl_with_flour.png",
+            },
 		},
 	};
 

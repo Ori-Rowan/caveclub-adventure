@@ -58,6 +58,9 @@ class ItemHandler {
 
 	// unselect the current item in use
 	stopUseItem() {
+        if (Object.keys(this.itemInUse).length == 0) {
+            return;
+        }
 		// remove the visual indicator
 		this.itemInUse.element.classList.remove("inUse");
         
@@ -65,4 +68,13 @@ class ItemHandler {
 		this.itemInUse = {};
         this.itemInUseName = "";
 	}
+
+    removeItemInUse() {
+        // remove item from inventory
+        delete this.inventory[this.itemInUseName];
+        // remove item from GUI
+        this.inventoryGUI.removeChild(this.itemInUse.element);
+        // stop using item
+        this.stopUseItem();
+    }
 }

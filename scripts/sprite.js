@@ -7,11 +7,10 @@ class Sprite {
 		this.spriteArgs = spriteArgs;
 		this.stateArgs = this.getStateArgs();
 
-        // checks if type is none
-        if (this.stateArgs.type != "none") {
-            // draw the sprite on canvas and create click area
-            this.drawSprite();
-        }
+       
+        // draw the sprite on canvas and create click area
+        this.drawSprite();
+       
 	}
 
 	// this will get the current state args
@@ -102,8 +101,19 @@ class Sprite {
 
         // if type
         if (type == "lock") {
+            // get item in use
             let iteminUse = this.game.itemHandler.itemInUseName;
-            console.log(iteminUse);
+
+            // check if item in use is the right key
+            if (iteminUse == this.stateArgs.key) {
+                // remove key item in inventory
+                this.game.itemHandler.removeItemInUse();
+
+                // change state
+                this.spriteArgs.currentState++;
+                this.game.sceneLoader.reloadScene();
+            }
+
         }
 
 
