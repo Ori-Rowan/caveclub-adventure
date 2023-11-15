@@ -6,6 +6,7 @@ class ItemHandler {
 		this.inventory = new Array();
 		this.inventoryGUI = this.gameWindow = document.getElementById("inventory");
 		this.itemInUse = {};
+        this.itemInUseName = "";
 	}
 
 	// add an item to invertory
@@ -24,12 +25,12 @@ class ItemHandler {
 
 		// when clicking on item, use it
 		item.element.addEventListener("click", () => {
-			this.useItem(item);
+			this.useItem(item, itemName);
 		});
 	}
 
 	// make item selcted as 'in use'
-	useItem(item) {
+	useItem(item, itemName) {
 		// check if item is in use already
 		if (Object.keys(this.itemInUse).length) {
 			return;
@@ -37,6 +38,7 @@ class ItemHandler {
 
 		// store item as itemInUse
 		this.itemInUse = item;
+        this.itemInUseName = itemName;
 
 		// add visual indicator
 		item.element.classList.add("inUse");
@@ -58,8 +60,9 @@ class ItemHandler {
 	stopUseItem() {
 		// remove the visual indicator
 		this.itemInUse.element.classList.remove("inUse");
-
+        
 		// make item not in use
 		this.itemInUse = {};
+        this.itemInUseName = "";
 	}
 }

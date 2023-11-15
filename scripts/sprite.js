@@ -7,7 +7,6 @@ class Sprite {
 		this.spriteArgs = spriteArgs;
 		this.stateArgs = this.getStateArgs();
 
-        console.log(this.stateArgs);
         // checks if type is none
         if (this.stateArgs.type != "none") {
             // draw the sprite on canvas and create click area
@@ -101,8 +100,12 @@ class Sprite {
 			this.game.sceneLoader.reloadScene();
 		}
 
+        // if type
         if (type == "lock") {
-            
+            let iteminUse = this.game.itemHandler.itemInUseName;
+            console.log(iteminUse);
         }
+
+
 	}
 }
