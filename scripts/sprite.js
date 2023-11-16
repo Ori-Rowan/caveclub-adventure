@@ -142,6 +142,7 @@ class Sprite {
 		// send signal
 		if (this.stateArgs.signal) {
 			let signal = this.stateArgs.signal;
+            // change the state of the signalled sprite
 			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
 				.currentState++;
 		}

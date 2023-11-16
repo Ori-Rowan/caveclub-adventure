@@ -158,7 +158,7 @@ $(document).ready(function () {
                             img: "pigeon-sitting.png",
                             coords: { x: 1030, y: 400 },
                             type: "locked-chest",
-                            key: "cucumber",
+                            key: "cucumberBowl",
                             reward: "hat",
                         },
                         state1: {
@@ -182,16 +182,23 @@ $(document).ready(function () {
         items: {
             cucumber: {
                 img: "cucumber.png",
+                merge: "bowl_with_flour",
+                product: "cucumberBowl",
             },
             necoIdk: {
                 img: "necoIdk.png",
             },
             bowl_with_flour: {
                 img: "bowl_with_flour.png",
+                merge: "cucumber",
+                product: "cucumberBowl",
             },
             hat: {
                 img: "hat.png",
             },
+            cucumberBowl: {
+                img: "cucumber-bowl.png",
+            }
         },
     };
     	
