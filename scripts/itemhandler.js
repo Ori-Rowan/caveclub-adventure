@@ -33,9 +33,7 @@ class ItemHandler {
 	useItem(item, itemName) {
 		// check if item is in use already
 		if (Object.keys(this.itemInUse).length) {
-            if (Object.keys(this.itemInUse.merge).length) {
-                this.tryMergeItem(itemName);
-            }
+            this.tryMergeItem(itemName);
 			return;
 		}
 
@@ -88,10 +86,19 @@ class ItemHandler {
     
     // try to merge item clicked on with item in use; itemName is of the clicked on item
     tryMergeItem(itemName){
-        if (itemName == this.itemInUse.merge) {
-            this.addItem(this.itemInUse.product);
-            this.removeItemInUse();
-            this.removeItem(this.inventory[itemName]);
+        // check if item in use is mergeable
+        if (typeof this.itemInUse.merge != "undefined") {
+            // check if item in use can be merged with item clicked on
+            if (itemName == this.itemInUse.merge) {
+                this.addItem(this.itemInUse.product);
+                this.removeItemInUse();
+                this.removeItem(this.inventory[itemName]);
+                return;
+            }
         }
+
+        // display fail merge message
+        this.game.dialogueHandler.displayMessage(itemName, "This doesn't seem to do anything.");
+        
     }
 }
