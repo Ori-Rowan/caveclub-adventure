@@ -8,5 +8,6 @@ class Game {
 		this.gameContainer = document.getElementById("gameContainer");
 		this.sceneLoader = new SceneLoader(this);
 		this.itemHandler = new ItemHandler(this);
+        this.dialogueHandler = new DialogueHandler(this);
 	}
 }

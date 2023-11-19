@@ -51,6 +51,11 @@ class Sprite {
 		this.gameWindow.addEventListener(
 			"click",
 			(event) => {
+                // check if dialogue box is displayed and if it is, dont do anything
+                if (this.game.dialogueHandler.isDisplayed()) {
+                    return;
+                }
+
 				// calculate where mouse is on 1920/1080 canvas even when resized
 				//! this isnt completly accurate
 				let mouseX = Math.ceil(
@@ -94,6 +99,7 @@ class Sprite {
 			this.game.itemHandler.addItem(reward);
 			// change state
 			this.changeState();
+            return;
 		}
 
 		// if type us lock then check if player has the right key and change state
@@ -108,42 +114,65 @@ class Sprite {
 
 				// change state
 				this.changeState();
-			}
+                return;
+			}            
 		}
-
+        
+        
 		// type locked-chest then check if player has the right key, give item and change state
 		if (type == "locked-chest") {
-			// get item in use
+            // get item in use
 			let iteminUse = this.game.itemHandler.itemInUseName;
-
+            
 			// check if item in use is the right key
 			if (iteminUse == this.stateArgs.key) {
-				// remove key item in inventory
+                // remove key item in inventory
 				this.game.itemHandler.removeItemInUse();
-
+                
 				// get reward
 				let reward = this.stateArgs.reward;
 				// give item to player
 				this.game.itemHandler.addItem(reward);
 				// change state
 				this.changeState();
+                return;
 			}
 		}
+        
+        // display message if there is an dialogue
+        //? this has to be on the end of the function, else it will be displayed at bad times
+        if(typeof this.stateArgs.dialogue !== 'undefined'){
+        
+            let title = this.stateArgs.dialogue.title;
+            let content = this.stateArgs.dialogue.content;
+            this.game.dialogueHandler.displayMessage(title, content);
+        }
 	}
-
+    
 	// change state, send possible signal and reload scene
 	changeState() {
-		// change state
+        // change state
 		this.spriteArgs.currentState++;
-
-		// reload scene
-		this.game.sceneLoader.reloadScene();
-
+        
 		// send signal
 		if (this.stateArgs.signal) {
-			let signal = this.stateArgs.signal;
+            let signal = this.stateArgs.signal;
+            // change the state of the signalled sprite
 			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
-				.currentState++;
-		}
+            .currentState++;
+		
+        
+        }
+
+        // display change state message if there is one
+        if (typeof this.stateArgs.dialogueChangeState !== 'undefined') {
+            let title = this.stateArgs.dialogueChangeState.title;
+            let content = this.stateArgs.dialogueChangeState.content;
+            this.game.dialogueHandler.displayMessage(title, content);
+            
+        }
+        
+        // reload scene
+        this.game.sceneLoader.reloadScene();
 	}
 }

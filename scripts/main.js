@@ -5,7 +5,7 @@ $(document).ready(function () {
 		scenes: {
 			garden: {
 				background: "garden.png",
-				sprites: {
+                sprites: {
 					lemonPlot: {
 						currentState: 0,
 						state0: {
@@ -22,11 +22,19 @@ $(document).ready(function () {
 							coords: { x: 370, y: 680 },
 							type: "chest",
 							reward: "cucumber",
+                            dialogueChangeState: {
+                                title: "Cucumber Plant",
+                                content: "You got a cucumber from the plant.",
+                            },
 						},
 						state1: {
 							img: "nocucumber-plant.png",
 							coords: { x: 370, y: 680 },
 							type: "decoration",
+                            dialogue: {
+                                title: "Cucumber Plant",
+                                content: "There isn't any more cucumbers.",
+                            },
 						},
 					},
 					kitchenDoor: {
