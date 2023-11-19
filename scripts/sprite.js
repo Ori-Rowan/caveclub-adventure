@@ -89,7 +89,6 @@ class Sprite {
 		if (type == "door") {
 			let path = this.stateArgs.path;
 			this.game.sceneLoader.loadScene(path);
-            return;
 		}
 
 		// if type is chest then give item and change state
@@ -100,7 +99,7 @@ class Sprite {
 			this.game.itemHandler.addItem(reward);
 			// change state
 			this.changeState();
-            return
+            return;
 		}
 
 		// if type us lock then check if player has the right key and change state
@@ -116,9 +115,7 @@ class Sprite {
 				// change state
 				this.changeState();
                 return;
-			}
-
-            
+			}            
 		}
         
         
@@ -143,7 +140,7 @@ class Sprite {
 		}
         
         // display message if there is an dialogue
-        //? has to be on the end, else it will be displayed even if the player has the right key
+        //? this has to be on the end of the function, else it will be displayed at bad times
         if(typeof this.stateArgs.dialogue !== 'undefined'){
         
             let title = this.stateArgs.dialogue.title;
@@ -157,15 +154,25 @@ class Sprite {
         // change state
 		this.spriteArgs.currentState++;
         
-		// reload scene
-		this.game.sceneLoader.reloadScene();
-
 		// send signal
 		if (this.stateArgs.signal) {
-			let signal = this.stateArgs.signal;
+            let signal = this.stateArgs.signal;
             // change the state of the signalled sprite
 			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
-				.currentState++;
-		}
+            .currentState++;
+		
+        
+        }
+
+        // display change state message if there is one
+        if (typeof this.stateArgs.dialogueChangeState !== 'undefined') {
+            let title = this.stateArgs.dialogueChangeState.title;
+            let content = this.stateArgs.dialogueChangeState.content;
+            this.game.dialogueHandler.displayMessage(title, content);
+            
+        }
+        
+        // reload scene
+        this.game.sceneLoader.reloadScene();
 	}
 }

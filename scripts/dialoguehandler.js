@@ -3,6 +3,11 @@ class DialogueHandler{
 	constructor(game) {
 		this.game = game;
 		this.dialogueBox = document.getElementById("dialogueBox");
+
+        // rescale the dialogue box font on window resize
+        window.addEventListener('resize', () => {
+            this.scaleFont();
+        });
 	}
 
     displayMessage(title ,content) {
@@ -13,6 +18,9 @@ class DialogueHandler{
 
         // display dialogue box
         this.dialogueBox.style.display = "block";
+
+        // rescale the dialogue box font
+        this.scaleFont();
 
         // when clicking on the game, stop displaying the message
         //! must be on a tiemout because otherwise it is activated with the 1st click
@@ -41,5 +49,16 @@ class DialogueHandler{
         }
         return false;
     }
+
+    // rescale the dialogue box font
+    scaleFont() {
+        // calculate the font size
+        let dialogueBoxWidth = this.dialogueBox.offsetWidth;
+        let scaledFontSize = dialogueBoxWidth * 0.01; // Adjust the multiplier as needed
+  
+        // set the font size
+        this.dialogueBox.style.fontSize = scaledFontSize + 'px';
+      }
+  
 }
 

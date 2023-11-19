@@ -5,7 +5,7 @@ $(document).ready(function () {
 		scenes: {
 			garden: {
 				background: "garden.png",
-				sprites: {
+                sprites: {
 					lemonPlot: {
 						currentState: 0,
 						state0: {
@@ -22,11 +22,19 @@ $(document).ready(function () {
 							coords: { x: 370, y: 680 },
 							type: "chest",
 							reward: "cucumber",
+                            dialogueChangeState: {
+                                title: "Cucumber Plant",
+                                content: "You got a cucumber from the plant.",
+                            },
 						},
 						state1: {
 							img: "nocucumber-plant.png",
 							coords: { x: 370, y: 680 },
 							type: "decoration",
+                            dialogue: {
+                                title: "Cucumber Plant",
+                                content: "There isn't any more cucumbers.",
+                            },
 						},
 					},
 					kitchenDoor: {
@@ -45,6 +53,10 @@ $(document).ready(function () {
                             coords: {x: 1700, y: 380},
                             type: "door",
                             path: "pigeonSwing",
+                            dialogue: {
+                                title: "Swing",
+                                content: "Look! There's a pigeon hanging out on the swing.",       
+                            },
                         },
 				    },
 			    },
@@ -150,6 +162,10 @@ $(document).ready(function () {
                             coords: { x: 1690, y: 640 },
                             type: "door",
                             path: "garden",
+                            dialogue: {
+                                title: "Garden",
+                                content: "This is your garden.",
+                            },
                         },
                     },
                     pigeon: {
@@ -162,13 +178,21 @@ $(document).ready(function () {
                             reward: "hat",
                             dialogue: {
                                 title: "Pigeon",
-                                content: "Hm, looks like it wants a cucumber sandwitch.",
+                                content: "Hm, looks like the pigeon wants a cucumber sandwitch.",
+                            },
+                            dialogueChangeState: {
+                                title: "Pigeon",
+                                content: "It gave you it's hat in return! The hat is very warm.",
                             },
                         },
                         state1: {
                             img: "pigeon-no-hat.png",
                             coords: { x: 1041, y: 400 },
                             type: "decoration",
+                            dialogue: {
+                                title: "Pigeon",
+                                content: "The pigeon seems happy even without it's hat.",
+                            },
                         },
                     },
                     ladder: {
