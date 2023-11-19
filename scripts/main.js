@@ -160,6 +160,10 @@ $(document).ready(function () {
                             type: "locked-chest",
                             key: "cucumberBowl",
                             reward: "hat",
+                            dialogue: {
+                                title: "Pigeon",
+                                content: "Hm, looks like it wants a cucumber sandwitch.",
+                            },
                         },
                         state1: {
                             img: "pigeon-no-hat.png",

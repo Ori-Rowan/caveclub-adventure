@@ -24,6 +24,7 @@
 }
 
 .dialogue-box {
+    aspect-ratio: 10/1;
 	position: absolute;
 	bottom: 5%;
 	left: 2.5%;
@@ -35,6 +36,13 @@
 	padding: 0 2.5%;
 	font-size: 1vw;
 }
+
+.dialogue-box h2 {
+    font-weight: 600;
+    margin-bottom: 0;   
+}
+
 .dialogue-box p {
+    margin-top: 0;
 	font-weight: 600;
 }
