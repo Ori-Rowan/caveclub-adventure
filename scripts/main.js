@@ -197,10 +197,46 @@ $(document).ready(function () {
 							coords: { x: 26, y: 110 },
 							type: "door",
 							path: "shed",
+                            dialogue: {
+                                title: "Shed",
+                                content: "It's your shed! All your tools are in here.",
+                            },
 						},
 					},
 				},
 			},
+            shed: {
+                background: "shed.png",
+                sprites: {
+                    wateringCan: {
+                        currentState: 0,
+                        state0: {
+                            img: "can-bees.png",
+                            coords: { x: 1200, y: 150 },
+                            type: "lock",
+                            key: "necoIdk",
+                            dialogue: {
+                                title: "Watering Can",
+                                content: "The bees won't let you get the watering can. You gotta put them to sleep somehow.",
+                            },
+                            dialogueChangeState: {
+                                title: "Watering Can",
+                                content: "As they always say &ldquo;banana bread before I go to bed puts the bees to sleep&ldquo;.",
+                            },
+                        },
+                        state1: {
+                            img: "can.png",
+                            coords: { x: 1200, y: 150 },
+                            type: "chest",
+                            reward: "wateringCan",
+                            dialogueChangeState: {
+                                title: "Watering Can",
+                                content: "You got the watering can! Now you only need water.",
+                            },
+                        },
+                    },
+                },
+            },
 			pigeonSwing: {
 				background: "pigeon.png",
 				sprites: {
@@ -227,7 +263,7 @@ $(document).ready(function () {
 							reward: "hat",
 							dialogue: {
 								title: "Pigeon",
-								content: "Looks like the pigeon wants a cucumber sandwitch.",
+								content: "The pigeon looks hungry. What only should I feed to a pigeon?",
 							},
 							dialogueChangeState: {
 								title: "Pigeon",
