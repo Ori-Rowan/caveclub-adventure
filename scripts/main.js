@@ -5,7 +5,7 @@ $(document).ready(function () {
 		scenes: {
 			garden: {
 				background: "garden.png",
-                sprites: {
+				sprites: {
 					lemonPlot: {
 						currentState: 0,
 						state0: {
@@ -22,19 +22,19 @@ $(document).ready(function () {
 							coords: { x: 370, y: 680 },
 							type: "chest",
 							reward: "cucumber",
-                            dialogueChangeState: {
-                                title: "Cucumber Plant",
-                                content: "You got a cucumber from the plant.",
-                            },
+							dialogueChangeState: {
+								title: "Cucumber Plant",
+								content: "You got a cucumber from the plant.",
+							},
 						},
 						state1: {
 							img: "nocucumber-plant.png",
 							coords: { x: 370, y: 680 },
 							type: "decoration",
-                            dialogue: {
-                                title: "Cucumber Plant",
-                                content: "There isn't any more cucumbers.",
-                            },
+							dialogue: {
+								title: "Cucumber Plant",
+								content: "There isn't any more cucumbers.",
+							},
 						},
 					},
 					kitchenDoor: {
@@ -46,13 +46,17 @@ $(document).ready(function () {
 							path: "kitchen",
 						},
 					},
-					signForest: {
+					signCrossroad: {
 						currentState: 0,
 						state0: {
 							img: "garden-sign.png",
 							coords: { x: 1700, y: 380 },
 							type: "door",
-							path: "forest",
+							path: "crossroad",
+							dialogue: {
+								title: "Crossroad",
+								content: "Look, a well! you can get water from there.",
+							},
 						},
 					},
 				},
@@ -148,7 +152,7 @@ $(document).ready(function () {
 					},
 				},
 			},
-			forest: {
+			crossroad: {
 				background: "forest.png",
 				sprites: {
 					signGarden: {
@@ -158,6 +162,10 @@ $(document).ready(function () {
 							coords: { x: 10, y: 750 },
 							type: "door",
 							path: "garden",
+							dialogue: {
+								title: "Garden",
+								content: "Here's your garden!",
+							},
 						},
 					},
 					pigeonSwing: {
@@ -167,6 +175,10 @@ $(document).ready(function () {
 							coords: { x: 680, y: 0 },
 							type: "door",
 							path: "pigeonSwing",
+							dialogue: {
+								title: "Swing",
+								content: "Cool! There's a pigeon hanging out on the swing.",
+							},
 						},
 					},
 					well: {
@@ -198,7 +210,11 @@ $(document).ready(function () {
 							img: "pigeon-sign.png",
 							coords: { x: 1690, y: 640 },
 							type: "door",
-							path: "forest",
+							path: "crossroad",
+							dialogue: {
+								title: "Crossroad",
+								content: "Look, a well! you can get water from there.",
+							},
 						},
 					},
 					pigeon: {
@@ -209,11 +225,23 @@ $(document).ready(function () {
 							type: "locked-chest",
 							key: "cucumber",
 							reward: "hat",
+							dialogue: {
+								title: "Pigeon",
+								content: "Looks like the pigeon wants a cucumber sandwitch.",
+							},
+							dialogueChangeState: {
+								title: "Pigeon",
+								content: "The pigeon gave you their hat. It's very warm!",
+							},
 						},
 						state1: {
 							img: "pigeon-no-hat.png",
 							coords: { x: 1041, y: 400 },
 							type: "decoration",
+							dialogue: {
+								title: "Pigeon",
+								content: "The pigeon seems happy.",
+							},
 						},
 					},
 					ladder: {
@@ -249,5 +277,5 @@ $(document).ready(function () {
 
 	// load initial scene
 	//! this will not be here later
-	game.sceneLoader.loadScene("forest");
+	game.sceneLoader.loadScene("garden");
 });
