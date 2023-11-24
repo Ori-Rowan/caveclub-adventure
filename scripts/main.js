@@ -197,46 +197,48 @@ $(document).ready(function () {
 							coords: { x: 26, y: 110 },
 							type: "door",
 							path: "shed",
-                            dialogue: {
-                                title: "Shed",
-                                content: "It's your shed! All your tools are in here.",
-                            },
+							dialogue: {
+								title: "Shed",
+								content: "It's your shed! All your tools are in here.",
+							},
 						},
 					},
 				},
 			},
-            shed: {
-                background: "shed.png",
-                sprites: {
-                    wateringCan: {
-                        currentState: 0,
-                        state0: {
-                            img: "can-bees.png",
-                            coords: { x: 1200, y: 150 },
-                            type: "lock",
-                            key: "necoIdk",
-                            dialogue: {
-                                title: "Watering Can",
-                                content: "The bees won't let you get the watering can. You gotta put them to sleep somehow.",
-                            },
-                            dialogueChangeState: {
-                                title: "Watering Can",
-                                content: "As they always say &ldquo;banana bread before I go to bed puts the bees to sleep&ldquo;.",
-                            },
-                        },
-                        state1: {
-                            img: "can.png",
-                            coords: { x: 1200, y: 150 },
-                            type: "chest",
-                            reward: "wateringCan",
-                            dialogueChangeState: {
-                                title: "Watering Can",
-                                content: "You got the watering can! Now you only need water.",
-                            },
-                        },
-                    },
-                },
-            },
+			shed: {
+				background: "shed.png",
+				sprites: {
+					wateringCan: {
+						currentState: 0,
+						state0: {
+							img: "can-bees.png",
+							coords: { x: 1200, y: 150 },
+							type: "lock",
+							key: "necoIdk",
+							dialogue: {
+								title: "Watering Can",
+								content:
+									"The bees won't let you get the watering can. You gotta put them to sleep somehow.",
+							},
+							dialogueChangeState: {
+								title: "Watering Can",
+								content:
+									"As they always say &ldquo;banana bread before I go to bed puts the bees to sleep&ldquo;.",
+							},
+						},
+						state1: {
+							img: "can.png",
+							coords: { x: 1200, y: 150 },
+							type: "chest",
+							reward: "watering_can",
+							dialogueChangeState: {
+								title: "Watering Can",
+								content: "You got the watering can! Now you only need water.",
+							},
+						},
+					},
+				},
+			},
 			pigeonSwing: {
 				background: "pigeon.png",
 				sprites: {
@@ -263,7 +265,11 @@ $(document).ready(function () {
 							reward: "hat",
 							dialogue: {
 								title: "Pigeon",
-								content: "The pigeon looks hungry. What only should I feed to a pigeon?",
+								content:
+									"The pigeon looks hungry. What only should I feed to a pigeon?",
+								img: "pigeon-sitting-bubble.png",
+                                coords: { x: 1041, y: 296 },
+                                displayImg: false,
 							},
 							dialogueChangeState: {
 								title: "Pigeon",
@@ -295,15 +301,27 @@ $(document).ready(function () {
 		items: {
 			cucumber: {
 				img: "cucumber.png",
+				dialogue: "A tasty green cucumber.",
+				merge: "bowl_with_flour",
+				product: "necoIdk",
 			},
 			necoIdk: {
 				img: "necoIdk.png",
+				dialogue: "A cute kitty.",
 			},
 			bowl_with_flour: {
 				img: "bowl_with_flour.png",
+				dialogue: "A bowl with flour.",
+				merge: "cucumber",
+				product: "necoIdk",
 			},
 			hat: {
 				img: "hat.png",
+				dialogue: "It's very stylish and very warm hat.",
+			},
+			watering_can: {
+				img: "can.png",
+				dialogue: "Great for watering plants.",
 			},
 		},
 	};
@@ -313,5 +331,5 @@ $(document).ready(function () {
 
 	// load initial scene
 	//! this will not be here later
-	game.sceneLoader.loadScene("garden");
+	game.sceneLoader.loadScene("pigeonSwing");
 });

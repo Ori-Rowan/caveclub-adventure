@@ -54,6 +54,4 @@ class SceneLoader {
 	reloadScene() {
 		this.loadScene(this.currentScene);
 	}
-
-    
 }

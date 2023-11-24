@@ -23,8 +23,17 @@ class Sprite {
 	// this draws sprite on the canvas on desired position and also create click area
 	//TODO: separate click are from this function
 	drawSprite() {
+        // define vars
 		let imgPath = this.stateArgs.img;
 		let coords = this.stateArgs.coords;
+
+        // check if dialogue message should be displayed
+        if (typeof this.stateArgs.dialogue !== "undefined" && typeof this.stateArgs.dialogue.displayImg !== "undefined" && this.stateArgs.dialogue.displayImg) {
+            // change img path, coords and change display
+            imgPath = this.stateArgs.dialogue.img;
+            coords = this.stateArgs.dialogue.coords;
+            this.stateArgs.dialogue.displayImg = false;
+        }
 
 		// draw the img on the canvas at desired coords
 		this.context = this.gameWindow.getContext("2d");
@@ -51,10 +60,10 @@ class Sprite {
 		this.gameWindow.addEventListener(
 			"click",
 			(event) => {
-                // check if dialogue box is displayed and if it is, dont do anything
-                if (this.game.dialogueHandler.isDisplayed()) {
-                    return;
-                }
+				// check if dialogue box is displayed and if it is, dont do anything
+				if (this.game.dialogueHandler.isDisplayed()) {
+					return;
+				}
 
 				// calculate where mouse is on 1920/1080 canvas even when resized
 				//! this isnt completly accurate
@@ -99,7 +108,7 @@ class Sprite {
 			this.game.itemHandler.addItem(reward);
 			// change state
 			this.changeState();
-            return;
+			return;
 		}
 
 		// if type us lock then check if player has the right key and change state
@@ -114,65 +123,78 @@ class Sprite {
 
 				// change state
 				this.changeState();
-                return;
-			}            
+				return;
+			}
 		}
-        
-        
+
 		// type locked-chest then check if player has the right key, give item and change state
 		if (type == "locked-chest") {
-            // get item in use
+			// get item in use
 			let iteminUse = this.game.itemHandler.itemInUseName;
-            
+
 			// check if item in use is the right key
 			if (iteminUse == this.stateArgs.key) {
-                // remove key item in inventory
+				// remove key item in inventory
 				this.game.itemHandler.removeItemInUse();
-                
+
 				// get reward
 				let reward = this.stateArgs.reward;
 				// give item to player
 				this.game.itemHandler.addItem(reward);
 				// change state
 				this.changeState();
-                return;
+				return;
 			}
 		}
-        
-        // display message if there is an dialogue
-        //? this has to be on the end of the function, else it will be displayed at bad times
-        if(typeof this.stateArgs.dialogue !== 'undefined'){
-        
-            let title = this.stateArgs.dialogue.title;
-            let content = this.stateArgs.dialogue.content;
-            this.game.dialogueHandler.displayMessage(title, content);
-        }
+
+
+		// display message if there is an dialogue
+		//? this has to be on the end of the function, else it will be displayed at bad times
+		this.displaySpriteMessage();
 	}
-    
+
 	// change state, send possible signal and reload scene
 	changeState() {
-        // change state
+		// change state
 		this.spriteArgs.currentState++;
-        
+
 		// send signal
 		if (this.stateArgs.signal) {
-            let signal = this.stateArgs.signal;
-            // change the state of the signalled sprite
+			let signal = this.stateArgs.signal;
+			// change the state of the signalled sprite
 			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
-            .currentState++;
-		
-        
-        }
+				.currentState++;
+		}
 
-        // display change state message if there is one
-        if (typeof this.stateArgs.dialogueChangeState !== 'undefined') {
-            let title = this.stateArgs.dialogueChangeState.title;
-            let content = this.stateArgs.dialogueChangeState.content;
-            this.game.dialogueHandler.displayMessage(title, content);
-            
-        }
-        
-        // reload scene
-        this.game.sceneLoader.reloadScene();
+		// display change state message if there is one
+		if (typeof this.stateArgs.dialogueChangeState !== "undefined") {
+			let title = this.stateArgs.dialogueChangeState.title;
+			let content = this.stateArgs.dialogueChangeState.content;
+			this.game.dialogueHandler.displayMessage(title, content);
+		}
+
+		// reload scene
+		this.game.sceneLoader.reloadScene();
 	}
+
+    // display message if there is an dialogue
+    displaySpriteMessage() {
+        // check if sprite has a dialogue
+        if (typeof this.stateArgs.dialogue !== "undefined") {
+            let dialogue = this.stateArgs.dialogue;
+			let title = dialogue.title;
+			let content = dialogue.content;
+            
+
+            // check if theres an img and reload if there is
+            let reload = false;
+            if (typeof dialogue.img !== "undefined") {
+                dialogue.displayImg = true;
+                reload = true;
+            }
+            
+            // display message
+            this.game.dialogueHandler.displayMessage(title, content, reload);
+		}
+    } 
 }

@@ -6,7 +6,7 @@ class ItemHandler {
 		this.inventory = new Array();
 		this.inventoryGUI = this.gameWindow = document.getElementById("inventory");
 		this.itemInUse = {};
-        this.itemInUseName = "";
+		this.itemInUseName = "";
 	}
 
 	// add an item to invertory
@@ -33,13 +33,19 @@ class ItemHandler {
 	useItem(item, itemName) {
 		// check if item is in use already
 		if (Object.keys(this.itemInUse).length) {
-            this.tryMergeItem(itemName);
+			// if clicked on the same item, display dialogue
+			if (this.itemInUseName == itemName) {
+				this.game.dialogueHandler.displayMessage(itemName, item.dialogue);
+				this.stopUseItem();
+				return;
+			}
+			this.tryMergeItem(itemName);
 			return;
 		}
 
 		// store item as itemInUse
 		this.itemInUse = item;
-        this.itemInUseName = itemName;
+		this.itemInUseName = itemName;
 
 		// add visual indicator
 		item.element.classList.add("inUse");
@@ -58,47 +64,59 @@ class ItemHandler {
 
 	// unselect the current item in use
 	stopUseItem() {
-        if (Object.keys(this.itemInUse).length == 0) {
-            return;
-        }
+		if (Object.keys(this.itemInUse).length == 0) {
+			return;
+		}
 		// remove the visual indicator
 		this.itemInUse.element.classList.remove("inUse");
-        
+
 		// make item not in use
 		this.itemInUse = {};
-        this.itemInUseName = "";
+		this.itemInUseName = "";
 	}
 
-    // removes item from inventory
-    removeItem(item) {
-        // remove item from inventory
-        delete this.inventory[item];
-        // remove item from GUI
-        this.inventoryGUI.removeChild(item.element);
-    }
+	// removes item from inventory
+	removeItem(item) {
+		// remove item from inventory
+		delete this.inventory[item];
+		// remove item from GUI
+		this.inventoryGUI.removeChild(item.element);
+	}
 
-    // removes item in use
-    removeItemInUse() {
-        this.removeItem(this.itemInUse);
-         // stop using item
-        this.stopUseItem();
-    }
-    
-    // try to merge item clicked on with item in use; itemName is of the clicked on item
-    tryMergeItem(itemName){
-        // check if item in use is mergeable
-        if (typeof this.itemInUse.merge != "undefined") {
-            // check if item in use can be merged with item clicked on
-            if (itemName == this.itemInUse.merge) {
-                this.addItem(this.itemInUse.product);
-                this.removeItemInUse();
-                this.removeItem(this.inventory[itemName]);
-                return;
-            }
-        }
+	// removes item in use
+	removeItemInUse() {
+		this.removeItem(this.itemInUse);
+		// stop using item
+		this.stopUseItem();
+	}
 
-        // display fail merge message
-        this.game.dialogueHandler.displayMessage(itemName, "This doesn't seem to do anything.");
-        
-    }
+	// try to merge item clicked on with item in use; itemName is of the clicked on item
+	tryMergeItem(itemName) {
+		// check if item in use is mergeable
+		if (typeof this.itemInUse.merge != "undefined") {
+			// check if item in use can be merged with item clicked on
+			if (itemName == this.itemInUse.merge) {
+				// add new item
+				this.addItem(this.itemInUse.product);
+
+				// display merge message
+				let msgTitle = this.itemInUseName + " + " + itemName;
+				let msgContent = "You made " + this.itemInUse.product;
+				this.game.dialogueHandler.displayMessage(msgTitle, msgContent);
+
+				// remove the old items
+				this.removeItemInUse();
+				this.removeItem(this.inventory[itemName]);
+
+				return;
+			}
+		}
+
+		// display fail merge message
+		let msgTitle = this.itemInUseName + " + " + itemName;
+		this.game.dialogueHandler.displayMessage(
+			msgTitle,
+			"This doesn't seem to do anything."
+		);
+	}
 }
