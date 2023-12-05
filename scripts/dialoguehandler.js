@@ -21,10 +21,10 @@ class DialogueHandler {
 		// rescale the dialogue box font
 		this.scaleFont();
 
-        // reload scene if needed
-        if (reloadScene) {
-            this.game.sceneLoader.reloadScene();
-        }
+		// reload scene if needed
+		if (reloadScene) {
+			this.game.sceneLoader.reloadScene();
+		}
 
 		// when clicking on the game, stop displaying the message
 		//? must be on a tiemout because otherwise it is activated with the 1st click
@@ -33,18 +33,17 @@ class DialogueHandler {
 				"click",
 				() => {
 					// hide dialogue box
-		            this.dialogueBox.style.display = "none";
+					this.dialogueBox.style.display = "none";
 
-                    // reload scene if needed
-                    if (reloadScene) {
-                        this.game.sceneLoader.reloadScene();
-                    }
+					// reload scene if needed
+					if (reloadScene) {
+						this.game.sceneLoader.reloadScene();
+					}
 				},
 				{ once: true }
 			);
 		}, 50);
 	}
-
 
 	// returns true if dialogue box is displayed
 	isDisplayed() {

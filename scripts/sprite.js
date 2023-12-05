@@ -23,17 +23,21 @@ class Sprite {
 	// this draws sprite on the canvas on desired position and also create click area
 	//TODO: separate click are from this function
 	drawSprite() {
-        // define vars
+		// define vars
 		let imgPath = this.stateArgs.img;
 		let coords = this.stateArgs.coords;
 
-        // check if dialogue message should be displayed
-        if (typeof this.stateArgs.dialogue !== "undefined" && typeof this.stateArgs.dialogue.displayImg !== "undefined" && this.stateArgs.dialogue.displayImg) {
-            // change img path, coords and change display
-            imgPath = this.stateArgs.dialogue.img;
-            coords = this.stateArgs.dialogue.coords;
-            this.stateArgs.dialogue.displayImg = false;
-        }
+		// check if dialogue message should be displayed
+		if (
+			typeof this.stateArgs.dialogue !== "undefined" &&
+			typeof this.stateArgs.dialogue.displayImg !== "undefined" &&
+			this.stateArgs.dialogue.displayImg
+		) {
+			// change img path, coords and change display
+			imgPath = this.stateArgs.dialogue.img;
+			coords = this.stateArgs.dialogue.coords;
+			this.stateArgs.dialogue.displayImg = false;
+		}
 
 		// draw the img on the canvas at desired coords
 		this.context = this.gameWindow.getContext("2d");
@@ -147,7 +151,6 @@ class Sprite {
 			}
 		}
 
-
 		// display message if there is an dialogue
 		//? this has to be on the end of the function, else it will be displayed at bad times
 		this.displaySpriteMessage();
@@ -177,24 +180,23 @@ class Sprite {
 		this.game.sceneLoader.reloadScene();
 	}
 
-    // display message if there is an dialogue
-    displaySpriteMessage() {
-        // check if sprite has a dialogue
-        if (typeof this.stateArgs.dialogue !== "undefined") {
-            let dialogue = this.stateArgs.dialogue;
+	// display message if there is an dialogue
+	displaySpriteMessage() {
+		// check if sprite has a dialogue
+		if (typeof this.stateArgs.dialogue !== "undefined") {
+			let dialogue = this.stateArgs.dialogue;
 			let title = dialogue.title;
 			let content = dialogue.content;
-            
 
-            // check if theres an img and reload if there is
-            let reload = false;
-            if (typeof dialogue.img !== "undefined") {
-                dialogue.displayImg = true;
-                reload = true;
-            }
-            
-            // display message
-            this.game.dialogueHandler.displayMessage(title, content, reload);
+			// check if theres an img and reload if there is
+			let reload = false;
+			if (typeof dialogue.img !== "undefined") {
+				dialogue.displayImg = true;
+				reload = true;
+			}
+
+			// display message
+			this.game.dialogueHandler.displayMessage(title, content, reload);
 		}
-    } 
+	}
 }

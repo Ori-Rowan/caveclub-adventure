@@ -76,13 +76,13 @@ $(document).ready(function () {
 				},
 			},
 			kitchen: {
-				background: "test_background_5.jpg",
+				background: "kitchen.png",
 				sprites: {
-					arrowGarden: {
+					doorGarden: {
 						currentState: 0,
 						state0: {
-							img: "arrow_down.png",
-							coords: { x: 1500, y: 200 },
+							img: "garden-door.png",
+							coords: { x: 1750, y: 250 },
 							type: "door",
 							path: "garden",
 						},
@@ -90,8 +90,8 @@ $(document).ready(function () {
 					bowl: {
 						currentState: 0,
 						state0: {
-							img: "bowl_with_flour.png",
-							coords: { x: 1000, y: 300 },
+							img: "bowl.png",
+							coords: { x: 520, y: 550 },
 							type: "door",
 							path: "bananaBread",
 						},
@@ -99,6 +99,61 @@ $(document).ready(function () {
 							img: "none.png",
 							coords: { x: 0, y: 0 },
 							type: "none",
+						},
+					},
+					recipie: {
+						currentState: 0,
+						state0: {
+							img: "list-1.png",
+							coords: { x: 765, y: 400 },
+							type: "decoration",
+							dialogue: {
+								title: "Recipie",
+								content: "It says you gotta add a banana.",
+							},
+						},
+						state1: {
+							img: "list-2.png",
+							coords: { x: 765, y: 400 },
+							type: "decoration",
+							dialogue: {
+								title: "Recipie",
+								content: "Now you gotta put the dough into the owen.",
+							},
+						},
+						state2: {
+							img: "list-3.png",
+							coords: { x: 765, y: 400 },
+							type: "decoration",
+							dialogue: {
+								title: "Recipie",
+								content: "And you're all done.",
+							},
+						},
+					},
+					oven: {
+						currentState: 0,
+						state0: {
+							img: "oven.png",
+							coords: { x: 960, y: 730 },
+							type: "lock",
+							dialogue: {
+								title: "Oven",
+								content: "This is where you bake things.",
+							},
+						},
+					},
+					pantryDp: {
+						currentState: 0,
+						state0: {
+							img: "pantry-door.png",
+							coords: { x: 0, y: 218 },
+							type: "door",
+							path: "pantry",
+							dialogue: {
+								title: "Pantry",
+								content: "This is where you keep your food.",
+							},
 						},
 					},
 				},
@@ -188,6 +243,10 @@ $(document).ready(function () {
 							coords: { x: 1310, y: 400 },
 							type: "door",
 							path: "well",
+							dialogue: {
+								title: "Well",
+								content: "There's a frog blocking the water stream.",
+							},
 						},
 					},
 					shed: {
@@ -268,8 +327,8 @@ $(document).ready(function () {
 								content:
 									"The pigeon looks hungry. What only should I feed to a pigeon?",
 								img: "pigeon-sitting-bubble.png",
-                                coords: { x: 1041, y: 296 },
-                                displayImg: false,
+								coords: { x: 1041, y: 296 },
+								displayImg: false,
 							},
 							dialogueChangeState: {
 								title: "Pigeon",
@@ -293,6 +352,49 @@ $(document).ready(function () {
 							coords: { x: 410, y: 223 },
 							type: "door",
 							key: "tree",
+						},
+					},
+				},
+			},
+			well: {
+				background: "well.png",
+				sprites: {
+					rope: {
+						currentState: 0,
+						state0: {
+							img: "rope.png",
+							coords: { x: 190, y: 0 },
+							type: "door",
+							path: "crossroad",
+							dialogue: {
+								title: "Crossroad",
+								content: "Look, a well! you can get water from there.",
+							},
+						},
+					},
+					frog: {
+						currentState: 0,
+						state0: {
+							img: "frog2.png",
+							coords: { x: 600, y: 477 },
+							type: "lock",
+							key: "hat",
+							dialogue: {
+								title: "Frog",
+								content: "The frog looks cold. Gotta warm them up somehow.",
+								img: "frog.png",
+								coords: { x: 600, y: 100 },
+								displayImg: false,
+							},
+						},
+						state1: {
+							img: "fountain.png",
+							coords: { x: 600, y: 690 },
+							type: "decoration",
+							dialogue: {
+								title: "Water stream",
+								content: "If only you had something to carry the water in.",
+							},
 						},
 					},
 				},
@@ -331,5 +433,5 @@ $(document).ready(function () {
 
 	// load initial scene
 	//! this will not be here later
-	game.sceneLoader.loadScene("pigeonSwing");
+	game.sceneLoader.loadScene("kitchen");
 });
