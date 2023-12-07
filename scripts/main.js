@@ -122,7 +122,7 @@ $(document).ready(function () {
 							path: "garden",
 							dialogue: {
 								title: "Garden",
-								content: "Here's your garden!",
+								content: "Be sure not to forget the banana bread!",
 							},
 							signal: {
 								scene: "kitchen",
@@ -286,7 +286,7 @@ $(document).ready(function () {
 							path: "garden",
 							dialogue: {
 								title: "Garden",
-								content: "Here's your garden!",
+								content: "Back at the garden!",
 							},
 						},
 					},
@@ -425,8 +425,8 @@ $(document).ready(function () {
 							img: "pigeon-sitting.png",
 							coords: { x: 1030, y: 400 },
 							type: "locked-chest",
-							key: "cucumber",
-							reward: "hat",
+							key: "Cucumber",
+							reward: "Hat",
 							dialogue: {
 								title: "Pigeon",
 								content:
@@ -437,7 +437,7 @@ $(document).ready(function () {
 							},
 							dialogueChangeState: {
 								title: "Pigeon",
-								content: "The pigeon gave you their hat. It's very warm!",
+								content: "The pigeon gave you their hat. It's warm!",
 							},
 						},
 						state1: {

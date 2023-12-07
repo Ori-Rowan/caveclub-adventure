@@ -108,7 +108,7 @@ class Sprite {
 		if (type == "door-change") {
 			let path = this.stateArgs.path;
 			this.game.sceneLoader.loadScene(path);
-            this.changeState();
+            this.changeState(false);
 		}
 
 		// if type is chest then give item and change state
@@ -164,7 +164,7 @@ class Sprite {
 	}
 
 	// change state, send possible signal and reload scene
-	changeState() {
+	changeState(reload = true) {
 		// change state
 		this.spriteArgs.currentState++;
 
@@ -184,7 +184,9 @@ class Sprite {
 		}
 
 		// reload scene
-		this.game.sceneLoader.reloadScene();
+        if (reload){
+            this.game.sceneLoader.reloadScene();
+        }
 	}
 
 	// display message if there is an dialogue
