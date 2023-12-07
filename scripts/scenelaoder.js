@@ -29,7 +29,9 @@ class SceneLoader {
 		context.clearRect(0, 0, this.gameWindow.width, this.gameWindow.height);
 		// remove all the click areas - controller abbort for each sprite
 		Object.values(this.loadedSprites).forEach(function (val) {
-			val.controller.abort();
+			if (typeof val.controller !== "undefined") {
+                val.controller.abort();
+            }
 		});
 		// clear the array
 		this.loadedSprites = [];

@@ -18,7 +18,7 @@ class ItemHandler {
 		// create img element and add it to the inventory GUI
 		item.element = document.createElement("img");
 		item.element.className = "inventoryItem";
-		item.element;
+        item.element.classList.add("prevent-select");
 		let path = item.img;
 		item.element.src = "src/img/items/" + path;
 		this.inventoryGUI.appendChild(item.element);

@@ -13,6 +13,10 @@ $(document).ready(function () {
 							coords: { x: 1246, y: 780 },
 							type: "door",
 							path: "lemonBoy",
+							dialogue: {
+								title: "Lemon plot",
+								content: "Looks like the clouds ran out of water!",
+							},
 						},
 					},
 					cucumberPlant: {
@@ -21,7 +25,7 @@ $(document).ready(function () {
 							img: "cucumber-plant.png",
 							coords: { x: 370, y: 680 },
 							type: "chest",
-							reward: "cucumber",
+							reward: "Cucumber",
 							dialogueChangeState: {
 								title: "Cucumber Plant",
 								content: "You got a cucumber from the plant.",
@@ -44,6 +48,10 @@ $(document).ready(function () {
 							coords: { x: 73, y: 153 },
 							type: "door",
 							path: "kitchen",
+							dialogue: {
+								title: "Kitchen",
+								content: "Smells like food in here!",
+							},
 						},
 					},
 					signCrossroad: {
@@ -55,22 +63,39 @@ $(document).ready(function () {
 							path: "crossroad",
 							dialogue: {
 								title: "Crossroad",
-								content: "Look, a well! you can get water from there.",
+								content: "Look, a well! You can get water from there.",
 							},
 						},
 					},
 				},
 			},
 			lemonBoy: {
-				background: "test_background_4.jpg",
+				background: "lemon.png",
 				sprites: {
-					arrowBack: {
+					lemonBoy: {
 						currentState: 0,
 						state0: {
-							img: "arrow_down.png",
-							coords: { x: 1000, y: 800 },
+							img: "lemonboy-dry.png",
+							coords: { x: 320, y: 140 },
+							type: "decoration",
+							dialogue: {
+								title: "Lemon Boy",
+								content:
+									"Lemon Boy doesn't look good. He needs some water ASAP!",
+							},
+						},
+					},
+					arrow: {
+						currentState: 0,
+						state0: {
+							img: "arrow-lemon.png",
+							coords: { x: 100, y: 100 },
 							type: "door",
 							path: "garden",
+							dialogue: {
+								title: "Garden",
+								content: "You find a way to help Lemon Boy!",
+							},
 						},
 					},
 				},
@@ -85,6 +110,34 @@ $(document).ready(function () {
 							coords: { x: 1750, y: 250 },
 							type: "door",
 							path: "garden",
+							dialogue: {
+								title: "Garden",
+								content: "You left the house. Sunlight hurts in your eyes!",
+							},
+						},
+						state1: {
+							img: "garden-door.png",
+							coords: { x: 1750, y: 250 },
+							type: "door-change",
+							path: "garden",
+							dialogue: {
+								title: "Garden",
+								content: "Here's your garden!",
+							},
+							signal: {
+								scene: "kitchen",
+								sprite: "oven",
+							},
+						},
+                        state2: {
+							img: "garden-door.png",
+							coords: { x: 1750, y: 250 },
+							type: "door",
+							path: "garden",
+							dialogue: {
+								title: "Garden",
+								content: "You left the house. Sunlight hurts in your eyes!",
+							},
 						},
 					},
 					bowl: {
@@ -92,12 +145,33 @@ $(document).ready(function () {
 						state0: {
 							img: "bowl.png",
 							coords: { x: 520, y: 550 },
-							type: "door",
-							path: "bananaBread",
+							type: "lock",
+							key: "Banana",
+							dialogue: {
+								title: "Dough",
+								content: "Someone has been doing banana bread here.",
+							},
+							dialogueChangeState: {
+								title: "Dough",
+								content: "You put the whole unpeeled banana into the dough!",
+							},
+							signal: {
+								scene: "kitchen",
+								sprite: "recipie",
+							},
 						},
 						state1: {
-							img: "none.png",
-							coords: { x: 0, y: 0 },
+							img: "bowl-banana.png",
+							coords: { x: 520, y: 530 },
+							type: "chest",
+							reward: "Banana_Dough",
+							dialogueChangeState: {
+								title: "Banana Dough",
+								content: "You have dough with banana in it!",
+							},
+						},
+						state2: {
+							img: "",							
 							type: "none",
 						},
 					},
@@ -137,13 +211,55 @@ $(document).ready(function () {
 							img: "oven.png",
 							coords: { x: 960, y: 730 },
 							type: "lock",
+							key: "Banana_Dough",
 							dialogue: {
 								title: "Oven",
 								content: "This is where you bake things.",
 							},
+							dialogueChangeState: {
+								title: "Oven",
+								content:
+									"Now we wait for it to bake. Be careful so you don't burn it!",
+							},
+							signal: {
+								scene: "kitchen",
+								sprite: "doorGarden",
+							},
+						},
+						state1: {
+							img: "oven-bowl.png",
+							coords: { x: 960, y: 730 },
+							type: "decoration",
+							dialogue: {
+								title: "Oven",
+								content: "The dough is slowly transforming into bread .",
+							},
+						},
+						state2: {
+							img: "oven-bread.png",
+							coords: { x: 960, y: 730 },
+							type: "chest",
+							reward: "Banana_Bread",
+							dialogueChangeState: {
+								title: "Oven",
+								content: "You almost burned the bread! But it's still good.",
+							},
+							signal: {
+								scene: "kitchen",
+								sprite: "recipie",
+							},
+						},
+						state3: {
+							img: "oven.png",
+							coords: { x: 960, y: 730 },
+							type: "lock",
+							dialogue: {
+								title: "Oven",
+								content: "The oven is still hot.",
+							},
 						},
 					},
-					pantryDp: {
+					pantryDoor: {
 						currentState: 0,
 						state0: {
 							img: "pantry-door.png",
@@ -154,55 +270,6 @@ $(document).ready(function () {
 								title: "Pantry",
 								content: "This is where you keep your food.",
 							},
-						},
-					},
-				},
-			},
-			bananaBread: {
-				background: "test_background_6.jpg",
-				sprites: {
-					arrowKitchen: {
-						currentState: 0,
-						state0: {
-							img: "arrow_down.png",
-							coords: { x: 1000, y: 800 },
-							type: "door",
-							path: "kitchen",
-						},
-					},
-					kitty: {
-						currentState: 0,
-						state0: {
-							img: "test_sprite_2.png",
-							coords: { x: 100, y: 100 },
-							type: "chest",
-							reward: "necoIdk",
-						},
-						state1: {
-							img: "none.png",
-							coords: { x: 0, y: 0 },
-							type: "none",
-						},
-					},
-					bananaBreadBowl: {
-						currentState: 0,
-						state0: {
-							img: "bowl.png",
-							coords: { x: 1000, y: 300 },
-							type: "lock",
-							key: "necoIdk",
-						},
-						state1: {
-							img: "bowl_with_flour.png",
-							coords: { x: 1000, y: 300 },
-							type: "chest",
-							reward: "bowl_with_flour",
-							signal: { scene: "kitchen", sprite: "bowl" },
-						},
-						state2: {
-							img: "none.png",
-							coords: { x: 0, y: 0 },
-							type: "none",
 						},
 					},
 				},
@@ -273,7 +340,7 @@ $(document).ready(function () {
 							img: "can-bees.png",
 							coords: { x: 1200, y: 150 },
 							type: "lock",
-							key: "necoIdk",
+							key: "Banana_Bread",
 							dialogue: {
 								title: "Watering Can",
 								content:
@@ -284,15 +351,53 @@ $(document).ready(function () {
 								content:
 									"As they always say &ldquo;banana bread before I go to bed puts the bees to sleep&ldquo;.",
 							},
+							signal: {
+								scene: "shed",
+								sprite: "bees",
+							},
 						},
 						state1: {
 							img: "can.png",
 							coords: { x: 1200, y: 150 },
 							type: "chest",
-							reward: "watering_can",
+							reward: "Watering_Can",
 							dialogueChangeState: {
 								title: "Watering Can",
 								content: "You got the watering can! Now you only need water.",
+							},
+						},
+                        state2: {
+							img: "",							
+							type: "none",
+						},
+					},
+					bees: {
+						currentState: 0,
+						state0: {
+							img: "",							
+							type: "none",
+						},
+						state1: {
+							img: "banana-bread.png",
+							coords: { x: 1000, y: 470 },
+							type: "decoration",
+							dialogue: {
+								title: "Bees",
+								content: "There's bunch of bees sleeping on the banana bread.",
+							},
+						},
+					},
+					arrow: {
+						currentState: 0,
+						state0: {
+							img: "arrow-shed.png",
+							coords: { x: 900, y: 950 },
+							type: "door",
+							path: "crossroad",
+							dialogue: {
+								title: "Crossroad",
+								content:
+									"You came out of the shed. Congrats on the comming out!",
 							},
 						},
 					},
@@ -310,7 +415,7 @@ $(document).ready(function () {
 							path: "crossroad",
 							dialogue: {
 								title: "Crossroad",
-								content: "Look, a well! you can get water from there.",
+								content: "Back at the cross road.",
 							},
 						},
 					},
@@ -351,7 +456,58 @@ $(document).ready(function () {
 							img: "ladder.png",
 							coords: { x: 410, y: 223 },
 							type: "door",
-							key: "tree",
+							path: "tree",
+							dialogue: {
+								title: "Tree",
+								content: "OMG! It's Juno!? What is she doing here?",
+							},
+						},
+					},
+				},
+			},
+			tree: {
+				background: "tree.png",
+				sprites: {
+					ladder: {
+						currentState: 0,
+						state0: {
+							img: "ladder-tree.png",
+							coords: { x: 210, y: 710 },
+							type: "door",
+							path: "pigeonSwing",
+							dialogue: {
+								title: "Pigeon Swing",
+								content: "The pigeon is still hanging out on the swing.",
+							},
+						},
+					},
+					banana: {
+						currentState: 0,
+						state0: {
+							img: "banana.png",
+							coords: { x: 1330, y: 683 },
+							type: "chest",
+							reward: "Banana",
+							dialogueChangeState: {
+								title: "Banana",
+								content: "You got a banana... from a regular tree?",
+							},
+						},
+						state1: {
+							img: "",							
+							type: "none",
+						},
+					},
+					juno: {
+						currentState: 0,
+						state0: {
+							img: "juno.png",
+							coords: { x: 800, y: 350 },
+							type: "decoration",
+							dialogue: {
+								title: "Juno",
+								content: "Juno is just chilling in the tree.",
+							},
 						},
 					},
 				},
@@ -368,7 +524,7 @@ $(document).ready(function () {
 							path: "crossroad",
 							dialogue: {
 								title: "Crossroad",
-								content: "Look, a well! you can get water from there.",
+								content: "You climed out of the well.",
 							},
 						},
 					},
@@ -401,29 +557,29 @@ $(document).ready(function () {
 			},
 		},
 		items: {
-			cucumber: {
+			Cucumber: {
 				img: "cucumber.png",
 				dialogue: "A tasty green cucumber.",
-				merge: "bowl_with_flour",
-				product: "necoIdk",
 			},
-			necoIdk: {
-				img: "necoIdk.png",
-				dialogue: "A cute kitty.",
+			Banana: {
+				img: "banana-item.png",
+				dialogue: "A perfect banana for baking.",
 			},
-			bowl_with_flour: {
-				img: "bowl_with_flour.png",
-				dialogue: "A bowl with flour.",
-				merge: "cucumber",
-				product: "necoIdk",
+			Banana_Dough: {
+				img: "bowl-item.png",
+				dialogue: "Dough with banana in it ready for baking.",
 			},
-			hat: {
+			Banana_Bread: {
+				img: "bbread.png",
+				dialogue: "Despite being a bit burnt, it's still tastes delicious!",
+			},
+			Hat: {
 				img: "hat.png",
 				dialogue: "It's very stylish and very warm hat.",
 			},
-			watering_can: {
+			Watering_Can: {
 				img: "can.png",
-				dialogue: "Great for watering plants.",
+				dialogue: "Great for watering plants. Only there is no water in it.",
 			},
 		},
 	};
@@ -433,5 +589,5 @@ $(document).ready(function () {
 
 	// load initial scene
 	//! this will not be here later
-	game.sceneLoader.loadScene("kitchen");
+	game.sceneLoader.loadScene("shed");
 });

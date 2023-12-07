@@ -104,6 +104,13 @@ class Sprite {
 			this.game.sceneLoader.loadScene(path);
 		}
 
+        // if type is door-change then do same as door but change state
+		if (type == "door-change") {
+			let path = this.stateArgs.path;
+			this.game.sceneLoader.loadScene(path);
+            this.changeState();
+		}
+
 		// if type is chest then give item and change state
 		if (type == "chest") {
 			// get reward
