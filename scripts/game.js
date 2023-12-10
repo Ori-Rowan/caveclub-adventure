@@ -13,6 +13,7 @@ class Game {
 	}
 
     // preload images
+    //? requires PHP to work, so only works on a server
     preload() {
 		// get the image array from the get_images.php
 		$.ajax({

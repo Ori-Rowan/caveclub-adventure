@@ -22,6 +22,7 @@
     <script src='scripts/scenelaoder.js'></script>
     <script src='scripts/dialoguehandler.js'></script>
     <script src='scripts/audioplayer.js'></script>
+    <script src='src/gameScript.js'></script>
 </head>
 
 <body>
@@ -41,8 +42,8 @@
                 <p class='prevent-select'></p>
             </div>
         </div>
-        <button class='fullscreen-button' onclick="var el = document.getElementById('gameContainer'); el.webkitRequestFullscreen();">
-            <img src='styles/fullscreen-icon.svg' alt="Fullscreen Icon">
+        <button class='fullscreen-button prevent-select' onclick="var el = document.getElementById('gameContainer'); el.webkitRequestFullscreen();">
+            <img class='prevent-select' src='styles/fullscreen-icon.svg' alt="Fullscreen Icon">
         </button>
     </main>
     <footer>
