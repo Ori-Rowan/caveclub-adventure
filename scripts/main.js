@@ -5,18 +5,25 @@ $(document).ready(function () {
 		scenes: {
 			garden: {
 				background: "garden.png",
+                music: "nature_ambience.mp3",
 				sprites: {
 					lemonPlot: {
 						currentState: 0,
 						state0: {
 							img: "lemonboy-garden.png",
 							coords: { x: 1246, y: 780 },
-							type: "door",
+							type: "door-change",
 							path: "lemonBoy",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Lemon plot",
 								content: "Looks like the clouds ran out of water!",
 							},
+						},
+						state1: {
+							img: "lemonboy-garden.png",
+							coords: { x: 1246, y: 780 },
+							type: "door",
+							path: "lemonBoy",
 						},
 					},
 					cucumberPlant: {
@@ -30,6 +37,7 @@ $(document).ready(function () {
 								title: "Cucumber Plant",
 								content: "You got a cucumber from the plant.",
 							},
+                            soundChangeState: "plant_pick.mp3",
 						},
 						state1: {
 							img: "nocucumber-plant.png",
@@ -46,12 +54,20 @@ $(document).ready(function () {
 						state0: {
 							img: "door-garden.png",
 							coords: { x: 73, y: 153 },
-							type: "door",
+							type: "door-change",
 							path: "kitchen",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Kitchen",
 								content: "Smells like food in here!",
 							},
+                            soundChangeState: "door_1.mp3",
+						},
+						state1: {
+							img: "door-garden.png",
+							coords: { x: 73, y: 153 },
+							type: "door",
+							path: "kitchen",
+                            sound: "door_1.mp3",
 						},
 					},
 					signCrossroad: {
@@ -59,12 +75,20 @@ $(document).ready(function () {
 						state0: {
 							img: "garden-sign.png",
 							coords: { x: 1700, y: 380 },
-							type: "door",
+							type: "door-change",
 							path: "crossroad",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Crossroad",
 								content: "Look, a well! You can get water from there.",
 							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state1: {
+							img: "garden-sign.png",
+							coords: { x: 1700, y: 380 },
+							type: "door",
+							path: "crossroad",
+                            sound: "footsteps.mp3",
 						},
 					},
 				},
@@ -90,18 +114,25 @@ $(document).ready(function () {
 						state0: {
 							img: "arrow-lemon.png",
 							coords: { x: 100, y: 100 },
-							type: "door",
+							type: "door-change",
 							path: "garden",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Garden",
 								content: "You find a way to help Lemon Boy!",
 							},
+						},
+						state1: {
+							img: "arrow-lemon.png",
+							coords: { x: 100, y: 100 },
+							type: "door",
+							path: "garden",
 						},
 					},
 				},
 			},
 			kitchen: {
 				background: "kitchen.png",
+                music: "room_ambience.mp3",
 				sprites: {
 					doorGarden: {
 						currentState: 0,
@@ -110,34 +141,29 @@ $(document).ready(function () {
 							coords: { x: 1750, y: 250 },
 							type: "door",
 							path: "garden",
-							dialogue: {
-								title: "Garden",
-								content: "You left the house. Sunlight hurts in your eyes!",
-							},
+                            sound: "door_1.mp3",
 						},
 						state1: {
 							img: "garden-door.png",
 							coords: { x: 1750, y: 250 },
 							type: "door-change",
 							path: "garden",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Garden",
-								content: "Be sure not to forget the banana bread!",
+								content: "You left the house. The sun hurts your eyes.",
 							},
 							signal: {
 								scene: "kitchen",
 								sprite: "oven",
 							},
+                            soundChangeState: "door_1.mp3",
 						},
-                        state2: {
+						state2: {
 							img: "garden-door.png",
 							coords: { x: 1750, y: 250 },
 							type: "door",
 							path: "garden",
-							dialogue: {
-								title: "Garden",
-								content: "You left the house. Sunlight hurts in your eyes!",
-							},
+                            sound: "door_1.mp3",
 						},
 					},
 					bowl: {
@@ -159,6 +185,7 @@ $(document).ready(function () {
 								scene: "kitchen",
 								sprite: "recipie",
 							},
+                            soundChangeState: "splat.mp3",
 						},
 						state1: {
 							img: "bowl-banana.png",
@@ -169,9 +196,10 @@ $(document).ready(function () {
 								title: "Banana Dough",
 								content: "You have dough with banana in it!",
 							},
+                            soundChangeState: "pick_up.mp3",
 						},
 						state2: {
-							img: "",							
+							img: "",
 							type: "none",
 						},
 					},
@@ -225,6 +253,7 @@ $(document).ready(function () {
 								scene: "kitchen",
 								sprite: "doorGarden",
 							},
+                            soundChangeState: "oven_start.mp3",
 						},
 						state1: {
 							img: "oven-bowl.png",
@@ -248,6 +277,7 @@ $(document).ready(function () {
 								scene: "kitchen",
 								sprite: "recipie",
 							},
+                            soundChangeState: "oven_end.mp3",
 						},
 						state3: {
 							img: "oven.png",
@@ -276,18 +306,27 @@ $(document).ready(function () {
 			},
 			crossroad: {
 				background: "forest.png",
+                music: "nature_ambience.mp3",
 				sprites: {
 					signGarden: {
 						currentState: 0,
 						state0: {
 							img: "forest-sign.png",
 							coords: { x: 10, y: 750 },
-							type: "door",
+							type: "door-change",
 							path: "garden",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Garden",
 								content: "Back at the garden!",
 							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state1: {
+							img: "forest-sign.png",
+							coords: { x: 10, y: 750 },
+							type: "door",
+							path: "garden",
+                            sound: "footsteps.mp3",
 						},
 					},
 					pigeonSwing: {
@@ -295,12 +334,46 @@ $(document).ready(function () {
 						state0: {
 							img: "forest-pigeon.png",
 							coords: { x: 680, y: 0 },
+							type: "door-change",
+							path: "pigeonSwing",
+							dialogueChangeState: {
+								title: "Swing",
+								content: "Cool! There's a pigeon hanging out on the swing.",
+							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state1: {
+							img: "forest-pigeon.png",
+							coords: { x: 680, y: 0 },
+							type: "door-change",
+							path: "pigeonSwing",
+							dialogueChangeState: {
+								title: "Swing",
+								content: "The pigeon hasn't left yet.",
+							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state2: {
+							img: "forest-pigeon.png",
+							coords: { x: 680, y: 0 },
+							type: "door-change",
+							path: "pigeonSwing",
+							dialogueChangeState: {
+								title: "Swing",
+								content: "Goess what? The pigeon is still here.",
+							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state3: {
+							img: "forest-pigeon.png",
+							coords: { x: 680, y: 0 },
 							type: "door",
 							path: "pigeonSwing",
 							dialogue: {
 								title: "Swing",
-								content: "Cool! There's a pigeon hanging out on the swing.",
+								content: "The pigeon is still here.",
 							},
+                            sound: "footsteps.mp3",
 						},
 					},
 					well: {
@@ -308,12 +381,18 @@ $(document).ready(function () {
 						state0: {
 							img: "forest-well.png",
 							coords: { x: 1310, y: 400 },
+							type: "door-change",
+							path: "well",
+							dialogueChangeState: {
+								title: "Well",
+								content: "The pigeon is still here.",
+							},
+						},
+						state1: {
+							img: "forest-well.png",
+							coords: { x: 1310, y: 400 },
 							type: "door",
 							path: "well",
-							dialogue: {
-								title: "Well",
-								content: "There's a frog blocking the water stream.",
-							},
 						},
 					},
 					shed: {
@@ -321,18 +400,27 @@ $(document).ready(function () {
 						state0: {
 							img: "forest-shed.png",
 							coords: { x: 26, y: 110 },
-							type: "door",
+							type: "door-change",
 							path: "shed",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Shed",
 								content: "It's your shed! All your tools are in here.",
 							},
+                            soundChangeState: "door_2.mp3",
+						},
+						state1: {
+							img: "forest-shed.png",
+							coords: { x: 26, y: 110 },
+							type: "door",
+							path: "shed",
+                            sound: "door_2.mp3",
 						},
 					},
 				},
 			},
 			shed: {
 				background: "shed.png",
+                music: "shack_ambience.mp3",
 				sprites: {
 					wateringCan: {
 						currentState: 0,
@@ -355,6 +443,8 @@ $(document).ready(function () {
 								scene: "shed",
 								sprite: "bees",
 							},
+                            soundChangeState: "bee_buzzin.mp3",
+                            sound: "bee_buzzin.mp3",
 						},
 						state1: {
 							img: "can.png",
@@ -365,16 +455,17 @@ $(document).ready(function () {
 								title: "Watering Can",
 								content: "You got the watering can! Now you only need water.",
 							},
+                            soundChangeState: "pick_can.mp3",
 						},
-                        state2: {
-							img: "",							
+						state2: {
+							img: "",
 							type: "none",
 						},
 					},
 					bees: {
 						currentState: 0,
 						state0: {
-							img: "",							
+							img: "",
 							type: "none",
 						},
 						state1: {
@@ -385,6 +476,7 @@ $(document).ready(function () {
 								title: "Bees",
 								content: "There's bunch of bees sleeping on the banana bread.",
 							},
+                            sound: "bee_buzzin.mp3",
 						},
 					},
 					arrow: {
@@ -392,31 +484,48 @@ $(document).ready(function () {
 						state0: {
 							img: "arrow-shed.png",
 							coords: { x: 900, y: 950 },
-							type: "door",
+							type: "door-change",
 							path: "crossroad",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Crossroad",
 								content:
 									"You came out of the shed. Congrats on the comming out!",
 							},
+                            soundChangeState: "door_2.mp3",
+						},
+						state1: {
+							img: "arrow-shed.png",
+							coords: { x: 900, y: 950 },
+							type: "door",
+							path: "crossroad",
+                            sound: "door_2.mp3",
 						},
 					},
 				},
 			},
 			pigeonSwing: {
 				background: "pigeon.png",
+                music: "nature_ambience.mp3",
 				sprites: {
 					sign: {
 						currentState: 0,
 						state0: {
 							img: "pigeon-sign.png",
 							coords: { x: 1690, y: 640 },
-							type: "door",
+							type: "door-change",
 							path: "crossroad",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Crossroad",
 								content: "Back at the cross road.",
 							},
+                            soundChangeState: "footsteps.mp3",
+						},
+						state1: {
+							img: "pigeon-sign.png",
+							coords: { x: 1690, y: 640 },
+							type: "door",
+							path: "crossroad",
+                            sound: "footsteps.mp3",
 						},
 					},
 					pigeon: {
@@ -455,30 +564,57 @@ $(document).ready(function () {
 						state0: {
 							img: "ladder.png",
 							coords: { x: 410, y: 223 },
+							type: "door-change",
+							path: "tree",
+							dialogueChangeState: {
+								title: "Tree",
+								content: "OMG! It's Juno!? What is she doing here?",
+							},
+                            soundChangeState: "leaf_rustle.mp3",
+						},
+						state1: {
+							img: "ladder.png",
+							coords: { x: 410, y: 223 },
 							type: "door",
 							path: "tree",
 							dialogue: {
 								title: "Tree",
-								content: "OMG! It's Juno!? What is she doing here?",
+								content: "Hello Juno!",
 							},
+                            sound: "leaf_rustle.mp3",
+						},
+						state2: {
+							img: "ladder.png",
+							coords: { x: 410, y: 223 },
+							type: "door",
+							path: "tree",
 						},
 					},
 				},
 			},
 			tree: {
 				background: "tree.png",
+                music: "wind_in_trees.mp3",
 				sprites: {
 					ladder: {
 						currentState: 0,
 						state0: {
 							img: "ladder-tree.png",
 							coords: { x: 210, y: 710 },
-							type: "door",
+							type: "door-change",
 							path: "pigeonSwing",
-							dialogue: {
+							dialogueChangeState: {
 								title: "Pigeon Swing",
 								content: "The pigeon is still hanging out on the swing.",
 							},
+                            soundChangeState: "leaf_rustle.mp3",
+						},
+						state1: {
+							img: "ladder-tree.png",
+							coords: { x: 210, y: 710 },
+							type: "door",
+							path: "pigeonSwing",
+                            sound: "leaf_rustle.mp3",
 						},
 					},
 					banana: {
@@ -492,9 +628,10 @@ $(document).ready(function () {
 								title: "Banana",
 								content: "You got a banana... from a regular tree?",
 							},
+                            soundChangeState: "plant_pick.mp3",
 						},
 						state1: {
-							img: "",							
+							img: "",
 							type: "none",
 						},
 					},
@@ -508,6 +645,7 @@ $(document).ready(function () {
 								title: "Juno",
 								content: "Juno is just chilling in the tree.",
 							},
+                            sound: "cat_purr.mp3",
 						},
 					},
 				},
@@ -527,6 +665,22 @@ $(document).ready(function () {
 								content: "You climed out of the well.",
 							},
 						},
+						state1: {
+							img: "rope.png",
+							coords: { x: 190, y: 0 },
+							type: "door-change",
+							path: "crossroad",
+							dialogueChangeState: {
+								title: "Crossroad",
+								content: "The frog is hanging out at the edge of the well!",
+							},
+						},
+						state2: {
+							img: "rope.png",
+							coords: { x: 190, y: 0 },
+							type: "door",
+							path: "crossroad",
+						},
 					},
 					frog: {
 						currentState: 0,
@@ -534,7 +688,7 @@ $(document).ready(function () {
 							img: "frog2.png",
 							coords: { x: 600, y: 477 },
 							type: "lock",
-							key: "hat",
+							key: "Hat",
 							dialogue: {
 								title: "Frog",
 								content: "The frog looks cold. Gotta warm them up somehow.",
@@ -542,14 +696,29 @@ $(document).ready(function () {
 								coords: { x: 600, y: 100 },
 								displayImg: false,
 							},
+							dialogueChangeState: {
+								title: "Frog",
+								content: "The frog took the hat and hopped out of the well.",
+							},
 						},
 						state1: {
+							img: "fountain.png",
+							coords: { x: 600, y: 690 },
+							type: "locked-chest",
+							key: "Watering_Can",
+							reward: "Full_Watering_Can",
+							dialogue: {
+								title: "Water stream",
+								content: "If only you had something to carry the water in.",
+							},
+						},
+						state2: {
 							img: "fountain.png",
 							coords: { x: 600, y: 690 },
 							type: "decoration",
 							dialogue: {
 								title: "Water stream",
-								content: "If only you had something to carry the water in.",
+								content: "You already got your water. What more do you want?",
 							},
 						},
 					},
@@ -581,13 +750,21 @@ $(document).ready(function () {
 				img: "can.png",
 				dialogue: "Great for watering plants. Only there is no water in it.",
 			},
+			Full_Watering_Can: {
+				img: "can-water.png",
+				dialogue: "Great for watering plants. And there's water in it!",
+			},
 		},
 	};
 
 	// create game object
 	game = new Game(gameScript);
 
+
 	// load initial scene
 	//! this will not be here later
-	game.sceneLoader.loadScene("shed");
+	game.sceneLoader.loadScene("garden");
+    game.gameWindow.addEventListener("click", function () {
+        // game.audioPlayer.playAudio("soundtrack.mp3", true);
+    });
 });

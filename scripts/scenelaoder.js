@@ -20,6 +20,10 @@ class SceneLoader {
 		this.setBackground(sceneArgs.background);
 		// load sprites
 		this.loadSprites(sceneArgs.sprites);
+        // play background music
+        if(typeof sceneArgs.music !== "undefined") {
+            this.game.audioPlayer.playBackgroundMusic(sceneArgs.music);
+        }
 	}
 
 	// deload the old scene
@@ -30,8 +34,8 @@ class SceneLoader {
 		// remove all the click areas - controller abbort for each sprite
 		Object.values(this.loadedSprites).forEach(function (val) {
 			if (typeof val.controller !== "undefined") {
-                val.controller.abort();
-            }
+				val.controller.abort();
+			}
 		});
 		// clear the array
 		this.loadedSprites = [];
@@ -39,8 +43,9 @@ class SceneLoader {
 
 	// set background for the scene
 	setBackground(img) {
-		var path = "src/img/background/" + img;
+        var path = "src/img/background/" + img;
 		this.gameWindow.style.backgroundImage = 'url("' + path + '")';
+
 	}
 
 	// load all of the sprites and store them in loadedSprites

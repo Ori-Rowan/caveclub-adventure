@@ -29,9 +29,11 @@ main {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+    margin: 0 auto;
 	height: calc(100vh - 100px);
 	padding-top: 100px;
 	position: relative;
+    width: calc((90vh - 100px) * 16 / 9);
 }
 
 .game-window {
@@ -48,7 +50,27 @@ main {
 .game-container {
 	position: relative;
 	width: calc((90vh - 100px) * 16 / 9);
-	max-width: 95%;
+}
+
+.fullscreen-button {
+    align-self: flex-end;
+    height: 4vh;
+    width: 4vh;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.fullscreen-button img{
+    height: 100%;
+    width: 100%;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
 }
 
 footer {
@@ -83,7 +105,7 @@ footer p {
 }
 
 .prevent-select {
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
-  }
+	-webkit-user-select: none; /* Safari */
+	-ms-user-select: none; /* IE 10 and IE 11 */
+	user-select: none; /* Standard syntax */
+}

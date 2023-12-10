@@ -9,5 +9,26 @@ class Game {
 		this.sceneLoader = new SceneLoader(this);
 		this.itemHandler = new ItemHandler(this);
 		this.dialogueHandler = new DialogueHandler(this);
+        this.audioPlayer = new AudioPlayer(this);
+	}
+
+    // preload images
+    preload() {
+		// get the image array from the get_images.php
+		$.ajax({
+			url: "scripts/get_images.php",
+			type: "POST",
+			success: function (response) {
+                // parse the response
+				let images = JSON.parse(response);
+
+                // iterate through them and load them
+                Object.values(images).forEach((val) => {
+                    // console.log(val);
+                    let img = new Image();
+                    img.src = "src/img/" + val;
+                });
+			},
+		});		
 	}
 }

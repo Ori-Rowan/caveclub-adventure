@@ -21,13 +21,13 @@
     <script src='scripts/dialoguehandler.js'></script>
     <script src='scripts/scenelaoder.js'></script>
     <script src='scripts/dialoguehandler.js'></script>
+    <script src='scripts/audioplayer.js'></script>
 </head>
 
 <body>
     <header>
-        <a href='https://club.cave.town' target='_blank'>
-            <img class='caveclub-logo' src='https://club.cave.town/build/_assets/logo-X7OIHLAT.png'
-                alt="Caveteam Logo for Header">
+        <a class='prevent-select' href='https://club.cave.town' target='_blank'>
+            <img class='caveclub-logo prevent-select' src='https://club.cave.town/build/_assets/logo-X7OIHLAT.png' alt="Caveteam Logo for Header">
         </a>
     </header>
     <main>
@@ -35,21 +35,22 @@
         <div id='gameContainer' class='game-container'>
             <div id='inventory' class='inventory'></div>
             <canvas class='game-window' height='1080' width='1920' id='gameWindow'></canvas>
-        
+
             <div id='dialogueBox' class='dialogue-box hidden' style='display: none;'>
-                <h2 class='prevent-select'>header</h2>
-                <p class='prevent-select'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum nulla assumenda reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, dolores? Nemo culpa non eos at odio laboriosam quia omnis officia veritatis, sed reiciendis odit, cupiditate qui. Libero pariatur deleniti similique?</p>               
+                <h2 class='prevent-select'></h2>
+                <p class='prevent-select'></p>
             </div>
-        
         </div>
+        <button class='fullscreen-button' onclick="var el = document.getElementById('gameContainer'); el.webkitRequestFullscreen();">
+            <img src='styles/fullscreen-icon.svg' alt="Fullscreen Icon">
+        </button>
     </main>
     <footer>
         <div class='wrapper'>
-            <a href='https://uk.cave.town' target='_blank'>
-                <img class='caveclub-logo prevent-select' src="https://club.cave.town/build/_assets/caveteam-YUTHYR3J.png"
-                    alt="Caveteam Logo for Footer">
+            <a class='prevent-select' href='https://uk.cave.town' target='_blank'>
+                <img class='caveclub-logo prevent-select'src="https://club.cave.town/build/_assets/caveteam-YUTHYR3J.png" alt="Caveteam Logo for Footer">
             </a>
-            <p>Coded by <a class='self-promo' href='https://orionrowan.cz' target='_blank'>Orion Rowan</a></p>
+            <p class='prevent-select'>Coded by <a class='self-promo' href='https://orionrowan.cz' target='_blank'>Orion Rowan</a></p>
         </div>
     </footer>
 </body>

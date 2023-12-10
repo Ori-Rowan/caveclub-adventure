@@ -109,6 +109,7 @@ class Sprite {
 			let path = this.stateArgs.path;
 			this.game.sceneLoader.loadScene(path);
             this.changeState(false);
+            return;
 		}
 
 		// if type is chest then give item and change state
@@ -161,6 +162,7 @@ class Sprite {
 		// display message if there is an dialogue
 		//? this has to be on the end of the function, else it will be displayed at bad times
 		this.displaySpriteMessage();
+        this.playSound();
 	}
 
 	// change state, send possible signal and reload scene
@@ -182,6 +184,12 @@ class Sprite {
 			let content = this.stateArgs.dialogueChangeState.content;
 			this.game.dialogueHandler.displayMessage(title, content);
 		}
+
+        // play change-sound if there is one
+        if (typeof this.stateArgs.soundChangeState !== "undefined") {
+            let path = this.stateArgs.soundChangeState;
+            this.game.audioPlayer.playAudio(path);
+        }
 
 		// reload scene
         if (reload){
@@ -208,4 +216,13 @@ class Sprite {
 			this.game.dialogueHandler.displayMessage(title, content, reload);
 		}
 	}
+
+    // play sound if there is one
+    playSound() {
+        // check if there is a sound
+        if (typeof this.stateArgs.sound !== "undefined") {
+            let path = this.stateArgs.sound;
+            this.game.audioPlayer.playAudio(path);
+        }
+    }
 }
