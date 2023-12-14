@@ -104,6 +104,13 @@ class Sprite {
 			this.game.sceneLoader.loadScene(path);
 		}
 
+        // if type exist, then act like door but reset the game
+        if (type == "exit") {
+
+            // reset the game
+            this.game.resetGame();
+        }
+
         // if type is door-change then do same as door but change state
 		if (type == "door-change") {
 			let path = this.stateArgs.path;
@@ -111,6 +118,23 @@ class Sprite {
             this.changeState(false);
             return;
 		}
+
+        if (type == "locked-door") {
+            // get item in use
+			let iteminUse = this.game.itemHandler.itemInUseName;
+
+			// check if item in use is the right key
+			if (iteminUse == this.stateArgs.key) {
+				// remove key item in inventory
+				this.game.itemHandler.removeItemInUse();
+
+				// change state
+                let path = this.stateArgs.path;
+                this.game.sceneLoader.loadScene(path);
+				this.changeState(false);                    
+				return;
+			}
+        }
 
 		// if type is chest then give item and change state
 		if (type == "chest") {
@@ -165,17 +189,20 @@ class Sprite {
         this.playSound();
 	}
 
-	// change state, send possible signal and reload scene
+	// change state, send possible signals and reload scene
 	changeState(reload = true) {
 		// change state
 		this.spriteArgs.currentState++;
 
-		// send signal
-		if (this.stateArgs.signal) {
-			let signal = this.stateArgs.signal;
-			// change the state of the signalled sprite
-			this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
-				.currentState++;
+		// send signals
+		if (this.stateArgs.signals) {
+			let signals = this.stateArgs.signals;
+
+            Object.values(signals).forEach((signal) => {
+                // change the state of the signalled sprite
+                this.game.gameScript.scenes[signal.scene].sprites[signal.sprite]
+                    .currentState++;
+            });
 		}
 
 		// display change state message if there is one

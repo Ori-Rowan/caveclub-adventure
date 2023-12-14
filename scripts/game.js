@@ -10,6 +10,7 @@ class Game {
 		this.itemHandler = new ItemHandler(this);
 		this.dialogueHandler = new DialogueHandler(this);
         this.audioPlayer = new AudioPlayer(this);
+        this.initScene = "";
 	}
 
     // preload images
@@ -32,4 +33,44 @@ class Game {
 			},
 		});		
 	}
+
+    // make every element on the page unselectable
+    disableSelect() {
+        // Get all elements on the page
+        var allElements = document.querySelectorAll('*');
+
+        // Add a class to each element
+        allElements.forEach(function(element) {
+        element.classList.add('prevent-select');
+        });
+    }
+
+    // initiate game
+    gameInit(initScene){
+        // load the game and disable selecting
+        this.preload();
+        this.disableSelect();
+
+        // set loadign screen as background
+        this.gameWindow.style.backgroundImage = 'url("src/img/background/loading_screen.png")';
+
+        // load initial scene upon clicking on the game container
+        this.gameContainer.addEventListener("click", () => {
+            this.sceneLoader.loadScene(initScene);
+        }, {once: true});
+
+        // set init scene
+        this.initScene = initScene;        
+    }
+
+    // reset the game
+    resetGame() {
+        Object.values(this.gameScript.scenes).forEach((val) => {
+            Object.values(val.sprites).forEach((val) => {
+                val.currentState = "0";
+            });
+        });
+        // load init scene
+        this.sceneLoader.loadScene(this.initScene);
+    }
 }

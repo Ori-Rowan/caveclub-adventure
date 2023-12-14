@@ -3,6 +3,8 @@
 :root {
 	--color-tan: #f9f7c0;
 	--color-green: #5f8c47;
+    --color-link: #F8C7CC;
+    /* E5989B */
 }
 
 body {
@@ -13,7 +15,7 @@ body {
 header {
 	background-color: var(--color-tan);
 	display: flex;
-	position: fixed;
+	position: absolute;
 	justify-content: center;
 	width: 100%;
 	height: 100px;
@@ -24,16 +26,22 @@ header .caveclub-logo {
 	height: 100px;
 }
 
-main {
+.game-section {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
-    margin: 0 auto;
+	margin: 0 auto;
 	height: calc(100vh - 100px);
 	padding-top: 100px;
 	position: relative;
-    width: calc((90vh - 100px) * 16 / 9);
+	width: calc((90vh - 100px) * 16 / 9);
+}
+
+.game-container {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: calc((90vh - 100px) * 16 / 9);
 }
 
 .game-window {
@@ -47,30 +55,52 @@ main {
 	z-index: 1;
 }
 
-.game-container {
-	position: relative;
-	width: calc((90vh - 100px) * 16 / 9);
-}
-
 .fullscreen-button {
-    align-self: flex-end;
-    height: 4vh;
-    width: 4vh;
-    padding: 0;
-    border: none;
-    background-color: transparent;
+	align-self: flex-end;
+	height: 4vh;
+	width: 4vh;
+	padding: 0;
+	border: none;
+	background-color: transparent;
 }
 
-.fullscreen-button img{
-    height: 100%;
-    width: 100%;
+.fullscreen-button img {
+	height: 100%;
+	width: 100%;
+	justify-self: flex-end;
 }
+
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+	font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.about {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+	margin: 0 auto;
+	padding: 100px 0;
+	font-family: "Roboto";
+    color: var(--color-tan);
+}
+
+.about h1 {
+	margin-bottom: 40px;
+    font-size: 3em;
+}
+
+.about p {
+	margin: 0 0 30px 0;
+    font-size: 1.2em;
+}
+
+.about .about-link {
+    color: var(--color-link);
+}
+
+.bmc-btn-container {
+	display: inline-block;
+	align-self: center;
 }
 
 footer {

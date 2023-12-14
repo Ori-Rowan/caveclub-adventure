@@ -1,6 +1,122 @@
 // this is the game script that contains all the information about the game
 gameScript = {
 	scenes: {
+        menu: {
+            background: "menu.png",
+            music: "menu_theme.mp3",
+            sprites: {
+                title: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-title.png",
+                        coords: { x: 800, y: 70 },
+                        type: "decoration",
+                    },
+                },
+                buttonPlay: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-button-play.png",
+                        coords: { x: 40, y: 200 },
+                        type: "door",
+                        path: "menuIntroduction",
+                        sound: "button_press.mp3",
+                    },
+                },
+                buttonControls: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-button-controls.png",
+                        coords: { x: 40, y: 400 },
+                        type: "door",
+                        path: "menuControls",
+                        sound: "button_press.mp3",
+                    },
+                },
+                buttonCredits: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-button-credits.png",
+                        coords: { x: 40, y: 600 },
+                        type: "door",
+                        path: "menuCredits",
+                        sound: "button_press.mp3",
+                    },
+                },
+            },
+        },
+        menuIntroduction: {
+            background: "menu.png",
+            music: "menu_theme.mp3",
+            sprites: {
+                pageIntroduction: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-introduction.png",
+                        coords: { x: 650, y: 100 },
+                        type: "decoration",
+                    },
+                },
+                buttonContinue: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-button-continue.png",
+                        coords: { x: 861, y: 734 },
+                        type: "door",
+                        path: "garden",
+                        sound: "button_press.mp3",
+                    },                
+                },
+            },
+        },
+        menuControls: {
+            background: "menu.png",
+            music: "menu_theme.mp3",
+            sprites: {
+                pageControls: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-controls.png",
+                        coords: { x: 650, y: 100 },
+                        type: "decoration",
+                    },
+                },
+                buttonBack: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-back-arrow.png",
+                        coords: { x: 1335, y: 884 },
+                        type: "door",
+                        path: "menu",
+                        sound: "button_press.mp3",
+                    },                
+                },
+            },
+        },
+        menuCredits: {
+            background: "menu.png",
+            music: "menu_theme.mp3",
+            sprites: {
+                pageCredits: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-credits.png",
+                        coords: { x: 650, y: 100 },
+                        type: "decoration",
+                    },
+                },
+                buttonBack: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-back-arrow.png",
+                        coords: { x: 1335, y: 884 },
+                        type: "door",
+                        path: "menu",
+                        sound: "button_press.mp3",
+                    },                
+                },
+            },
+        },
 		garden: {
 			background: "garden.png",
 			music: "nature_ambience.mp3",
@@ -100,12 +216,15 @@ gameScript = {
 					state0: {
 						img: "lemonboy-dry.png",
 						coords: { x: 320, y: 140 },
-						type: "decoration",
+						type: "locked-door",
+                        key: "Full_Watering_Can",
+                        path: "endscreen",
 						dialogue: {
 							title: "Lemon Boy",
 							content: "Lemon Boy doesn't look good. He needs some water ASAP!",
 						},
                         sound: "lemon_cry.mp3",
+                        soundChangeState: "water_lemon.mp3",
 					},
 				},
 				arrow: {
@@ -151,9 +270,8 @@ gameScript = {
 							title: "Garden",
 							content: "You left the house. The sun hurts your eyes.",
 						},
-						signal: {
-							scene: "kitchen",
-							sprite: "oven",
+						signals: {
+							1: {scene: "kitchen",sprite: "oven",},
 						},
 						soundChangeState: "door_1.mp3",
 					},
@@ -180,9 +298,8 @@ gameScript = {
 							title: "Dough",
 							content: "You put the whole unpeeled banana into the dough!",
 						},
-						signal: {
-							scene: "kitchen",
-							sprite: "recipe",
+						signals: {
+							1: {scene: "kitchen", sprite: "recipe",}
 						},
 						soundChangeState: "splat.mp3",
 					},
@@ -210,7 +327,7 @@ gameScript = {
 						type: "decoration",
 						dialogue: {
 							title: "Recipe",
-							content: "It says you gotta add a banana.",
+							content: "It says you gotta add a banana to the dough.",
 						},
 					},
 					state1: {
@@ -248,9 +365,8 @@ gameScript = {
 							content:
 								"Now we wait for it to bake. Be careful so you don't burn it!",
 						},
-						signal: {
-							scene: "kitchen",
-							sprite: "doorGarden",
+						signals: {
+							1: {scene: "kitchen", sprite: "doorGarden",}
 						},
 						soundChangeState: "oven_start.mp3",
 					},
@@ -273,9 +389,8 @@ gameScript = {
 							title: "Oven",
 							content: "You almost burned the bread! But it's still good.",
 						},
-						signal: {
-							scene: "kitchen",
-							sprite: "recipe",
+						signals: {
+							1: {scene: "kitchen", sprite: "recipe",}
 						},
 						soundChangeState: "oven_end.mp3",
 					},
@@ -294,16 +409,76 @@ gameScript = {
 					state0: {
 						img: "pantry-door.png",
 						coords: { x: 0, y: 218 },
-						type: "door",
+						type: "door-change",
 						path: "pantry",
-						dialogue: {
+						dialogueChangeState: {
 							title: "Pantry",
-							content: "This is where you keep your food.",
+							content: "This is where you keep your food and other stuff.",
 						},
+                        soundChangeState: "door_3.mp3",
 					},
+                    state1: {
+                        img: "pantry-door.png",
+                        coords: { x: 0, y: 218 },
+                        type: "door",
+                        path: "pantry",
+                        sound: "door_3.mp3",
+                    },
 				},
 			},
 		},
+        pantry: {
+            background: "pantry.png",
+            music: "room_ambience.mp3",
+            sprites: {
+                arrow: {
+                    currentState: 0,
+                    state0: {
+                        img: "arrow-pantry.png",
+                        coords: { x: 900, y: 970 },
+                        type: "door",
+                        path: "kitchen",
+                        sound: "door_3.mp3",
+                    },
+                },
+                toast: {
+                    currentState: 0,
+                    state0: {
+                        img: "toast_packed.png",
+                        coords: { x: 1230, y: 400 },
+                        type: "chest",
+                        reward: "Toast",
+                        dialogueChangeState: {
+                            title: "Toast Bread",
+                            content: "You got yourself nice two pieces of toast bread!",
+                        },
+                        soundChangeState: "bread_open.mp3",
+                    },
+                    state1: {
+                        img: "toast_unpacked.png",
+                        coords: { x: 1222, y: 401 },
+                        type: "decoration",
+                        dialogue: {
+                            title: "Toast Bread",
+                            content: "Thats enough toast for today.",
+                        },
+                    },
+                },
+                ratt_kidd: {
+                    currentState: 0,
+                    state0: {
+                        img: "ratt_kidd.png",
+                        coords: { x: 355, y: 870 },
+                        type: "decoration",
+                        dialogue: {
+                            title: "Ratt Kidd",
+                            content: "Yo! Yo! Yo! Is that the Ratt Kidd?!",
+                        },
+                        sound: "ratt.mp3",
+                    },
+                },              
+            },
+        },
 		crossroad: {
 			background: "forest.png",
 			music: "nature_ambience.mp3",
@@ -441,9 +616,8 @@ gameScript = {
 							content:
 								"As they always say &ldquo;banana bread before I go to bed puts the bees to sleep&ldquo;.",
 						},
-						signal: {
-							scene: "shed",
-							sprite: "bees",
+						signals: {
+							1: {scene: "shed", sprite: "bees",}
 						},
 						soundChangeState: "bee_buzzin.mp3",
 						sound: "bee_buzzin.mp3",
@@ -535,7 +709,7 @@ gameScript = {
 						img: "pigeon-sitting.png",
 						coords: { x: 1030, y: 400 },
 						type: "locked-chest",
-						key: "Cucumber",
+						key: "Cucumber_Sandwich",
 						reward: "Hat",
 						dialogue: {
 							title: "Pigeon",
@@ -547,14 +721,14 @@ gameScript = {
 						},
 						dialogueChangeState: {
 							title: "Pigeon",
-							content: "The pigeon gave you their hat. It's warm!",
+							content: "The pigeon gave you his hat. It's warm!",
 						},
 						sound: "pigeon.mp3",
 						soundChangeState: "pigeon_eat.mp3",
 					},
 					state1: {
 						img: "pigeon-no-hat.png",
-						coords: { x: 1041, y: 400 },
+						coords: { x: 1042, y: 400 },
 						type: "decoration",
 						dialogue: {
 							title: "Pigeon",
@@ -568,30 +742,35 @@ gameScript = {
 					state0: {
 						img: "ladder.png",
 						coords: { x: 410, y: 223 },
-						type: "door-change",
-						path: "tree",
-						dialogueChangeState: {
-							title: "Tree",
-							content: "OMG! It's Juno!? What is she doing here?",
-						},
-						soundChangeState: "leaf_rustle.mp3",
-					},
-					state1: {
-						img: "ladder.png",
-						coords: { x: 410, y: 223 },
 						type: "door",
 						path: "tree",
 						dialogue: {
 							title: "Tree",
-							content: "Hello Juno!",
+							content: "OMG! It's Juno!? What is she doing here?",
 						},
 						sound: "leaf_rustle.mp3",
 					},
-					state2: {
+					state1: {
+						img: "ladder.png",
+						coords: { x: 410, y: 223 },
+						type: "door-change",
+						path: "tree",
+                        dialogueChangeState: {
+                            title: "Tree",
+                            content: "There she is! Chillin with Juno!",
+                        },
+                        soundChangeState: "leaf_rustle.mp3",
+					},
+                    state2: {
 						img: "ladder.png",
 						coords: { x: 410, y: 223 },
 						type: "door",
 						path: "tree",
+                        dialogue: {
+                            title: "Tree",
+                            content: "Hello Juno! Hello frog!",
+                        },
+                        sound: "leaf_rustle.mp3",
 					},
 				},
 			},
@@ -647,11 +826,31 @@ gameScript = {
 						type: "decoration",
 						dialogue: {
 							title: "Juno",
-							content: "Juno is just chilling in the tree.",
+							content: "You pat Juno on the head!",
+                            img: "juno-pat.png",
+							coords: { x: 783, y: 293 },
+							displayImg: false,
 						},
 						sound: "cat_purr.mp3",
 					},
 				},
+                frog: {
+                    currentState: 0,
+                    state0: {
+                        img: "",
+                        type: "none",
+                    },
+                    state1: {
+                        img: "frog-hat.png",
+                        coords: { x: 590, y: 450 },
+                        type: "decoration",
+                        dialogue: {
+                            title: "Frog",
+                            content: "The frog isn't cold anymore!",
+                        },
+                        sound: "frog_ribbit.mp3",
+                    },
+                }
 			},
 		},
 		well: {
@@ -699,19 +898,20 @@ gameScript = {
 						key: "Hat",
 						dialogue: {
 							title: "Frog",
-							content: "The frog looks cold. Gotta warm them up somehow.",
+							content: "The frog looks cold. Gotta warm her up somehow.",
 							img: "frog.png",
 							coords: { x: 600, y: 100 },
 							displayImg: false,
-						},
-						signal: {
-							scene: "well",
-							sprite: "rope",
 						},
 						dialogueChangeState: {
 							title: "Frog",
 							content: "The frog took the hat and hopped out of the well.",
 						},
+                        signals:{
+                            1: {scene: "tree", sprite: "frog",},
+                            2: {scene: "well", sprite: "rope",},
+                            3: {scene: "pigeonSwing", sprite: "ladder",},
+                        },
 						sound: "frog_ribbit.mp3",
 						soundChangeState: "frog_jump.mp3",
 					},
@@ -741,12 +941,66 @@ gameScript = {
 				},
 			},
 		},
+        endscreen:{
+            background: "endscreen.png",
+            music: "end_screen.mp3",
+            sprites: {
+                arrow: {
+                    currentState: 0,
+                    state0: {
+                        img: "arrow_endscreen.png",
+                        coords: { x: 1740, y: 900},
+                        type: "door",
+                        path: "endscreenCredits",
+                        sound: "button_press.mp3",
+                    },
+                },
+            },
+        },
+        endscreenCredits:{
+            background: "endscreen.png",
+            music: "end_screen.mp3",
+            sprites: {
+                pageCredits: {
+                    currentState: 0,
+                    state0: {
+                        img: "end-credits.png",
+                        coords: { x: 600, y: 100 },
+                        type: "decoration",
+                    },
+                },
+                buttonBack: {
+                    currentState: 0,
+                    state0: {
+                        img: "menu-back-arrow.png",
+                        coords: { x: 1285, y: 884 },
+                        type: "exit",
+                        path: "menu",
+                        sound: "button_press.mp3",
+                    },                
+                },
+            },
+        },
 	},
 	items: {
 		Cucumber: {
 			img: "cucumber.png",
 			dialogue: "A tasty green cucumber.",
+            merge: "Toast",
+            product: "Cucumber_Sandwich",
+            mergeDialogue: "You invented cucumber sandwich.",
 		},
+        Toast: {
+            img: "toast.png",
+            dialogue: "Two pieces of toast bread.",
+            merge: "Cucumber",
+            product: "Cucumber_Sandwich",
+            mergeDialogue: "You invented cucumber sandwich.",
+        },
+        Cucumber_Sandwich: {
+            img: "cucumber-sandwich.png",
+            dialogue: "Mmmm! Tasty!",
+        },
 		Banana: {
 			img: "banana-item.png",
 			dialogue: "A perfect banana for baking.",
@@ -757,7 +1011,7 @@ gameScript = {
 		},
 		Banana_Bread: {
 			img: "bbread.png",
-			dialogue: "Despite being a bit burnt, it's still tastes delicious!",
+			dialogue: "Despite being a bit burnt, it  still tastes delicious!",
 		},
 		Hat: {
 			img: "hat.png",

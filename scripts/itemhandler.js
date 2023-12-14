@@ -101,7 +101,7 @@ class ItemHandler {
 
 				// display merge message
 				let msgTitle = this.itemInUseName + " + " + itemName;
-				let msgContent = "You made " + this.itemInUse.product;
+				let msgContent = this.itemInUse.mergeDialogue;
 				this.game.dialogueHandler.displayMessage(msgTitle, msgContent);
 
 				// remove the old items

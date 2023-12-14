@@ -7,11 +7,10 @@
     <title>Caveclub Adventure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Handlee&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Handlee&family=Roboto&family=Lato&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="https://club.cave.town/build/_assets/logo-X7OIHLAT.png">
     <link rel='stylesheet' href='styles/template-style.css'>
     <link rel='stylesheet' href='styles/inventory-style.css'>
-    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src='scripts/sprite.js'></script>
@@ -20,38 +19,45 @@
     <script src='scripts/itemhandler.js'></script>
     <script src='scripts/dialoguehandler.js'></script>
     <script src='scripts/scenelaoder.js'></script>
-    <script src='scripts/dialoguehandler.js'></script>
     <script src='scripts/audioplayer.js'></script>
     <script src='src/gameScript.js'></script>
 </head>
 
 <body>
     <header>
-        <a class='prevent-select' href='https://club.cave.town' target='_blank'>
-            <img class='caveclub-logo prevent-select' src='https://club.cave.town/build/_assets/logo-X7OIHLAT.png' alt="Caveteam Logo for Header">
+        <a href='https://club.cave.town' target='_blank'>
+            <img class='caveclub-logo ' src='https://club.cave.town/build/_assets/logo-X7OIHLAT.png' alt="Caveteam Logo for Header">
         </a>
     </header>
     <main>
-        <!-- here goes the game -->
-        <div id='gameContainer' class='game-container'>
-            <div id='inventory' class='inventory'></div>
-            <canvas class='game-window' height='1080' width='1920' id='gameWindow'></canvas>
-
-            <div id='dialogueBox' class='dialogue-box hidden' style='display: none;'>
-                <h2 class='prevent-select'></h2>
-                <p class='prevent-select'></p>
+        <div class='game-section'>
+            <!-- here goes the game -->
+            <div id='gameContainer' class='game-container'>
+                <div id='inventory' class='inventory'></div>
+                <canvas class='game-window' height='1080' width='1920' id='gameWindow'></canvas>
+                <div id='dialogueBox' class='dialogue-box hidden' style='display: none;'>
+                    <h2>neco</h2>
+                    <p>neco</p>
+                </div>
             </div>
+            <button class='fullscreen-button ' onclick="var el = document.getElementById('gameContainer'); el.webkitRequestFullscreen();">
+                <img src='styles/fullscreen-icon.svg' alt="Fullscreen Icon">
+            </button>
         </div>
-        <button class='fullscreen-button prevent-select' onclick="var el = document.getElementById('gameContainer'); el.webkitRequestFullscreen();">
-            <img class='prevent-select' src='styles/fullscreen-icon.svg' alt="Fullscreen Icon">
-        </button>
+        <div class='about'>
+            <h1>About the Project</h1>
+            <p>The game was made by me (Orion Rowan) for the Cave Club anniversary and Robbie's birthday. The story is based on Cavetown's songs, so if some of the stuff doesn't make sense, that's because there are references to them. The project was made almost entirely in JS, and the code is pretty reusable. So, if you want to take a look and reuse it, here is the <a class='about-link' href="https://github.com/Ori-Rowan/caveclub-adventure" target="_blank" rel="noopener noreferrer"> GitHub link</a>.</p>
+            <p>All the amazing art you can see there was made by my friend and a starting artist, Ratt Kidd. You can find him as <a class='about-link' href="https://www.instagram.com/ratt_kidd.art/?utm_source=ig_web_button_share_sheet&igshid=OGQ5ZDc2ODk2ZA==" target="_blank" rel="noopener noreferrer">@ratt_kidd.art</a> on Instagram, so please show him some love and support!</p>
+            <p>If you like the game and would like to support us financially, please consider donating on the Buy Me a Coffee link below. We would appreciate it a ton. Projects like these require a lot of effort and time, and every donation allows us to continue making games like these. The money will be split evenly between me and Ratt.</p>
+            <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="orionrowan" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>           
+        </div>
     </main>
     <footer>
         <div class='wrapper'>
-            <a class='prevent-select' href='https://uk.cave.town' target='_blank'>
-                <img class='caveclub-logo prevent-select'src="https://club.cave.town/build/_assets/caveteam-YUTHYR3J.png" alt="Caveteam Logo for Footer">
+            <a href='https://uk.cave.town' target='_blank'>
+                <img class='caveclub-logo 'src="https://club.cave.town/build/_assets/caveteam-YUTHYR3J.png" alt="Caveteam Logo for Footer">
             </a>
-            <p class='prevent-select'>Coded by <a class='self-promo' href='https://orionrowan.cz' target='_blank'>Orion Rowan</a></p>
+            <p>Coded by <a class='self-promo' href='https://orionrowan.cz' target='_blank'>Orion Rowan</a></p>
         </div>
     </footer>
 </body>
